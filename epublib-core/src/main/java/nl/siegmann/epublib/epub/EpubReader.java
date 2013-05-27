@@ -1,5 +1,15 @@
 package nl.siegmann.epublib.epub;
 
+import nl.siegmann.epublib.Constants;
+import nl.siegmann.epublib.domain.*;
+import nl.siegmann.epublib.service.MediatypeService;
+import nl.siegmann.epublib.util.ResourceUtil;
+import nl.siegmann.epublib.util.StringUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,20 +17,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-
-import nl.siegmann.epublib.Constants;
-import nl.siegmann.epublib.domain.Book;
-import nl.siegmann.epublib.domain.MediaType;
-import nl.siegmann.epublib.domain.Resource;
-import nl.siegmann.epublib.domain.Resources;
-import nl.siegmann.epublib.service.MediatypeService;
-import nl.siegmann.epublib.util.ResourceUtil;
-import nl.siegmann.epublib.util.StringUtil;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
 /**
  * Reads an epub file.
@@ -71,12 +67,13 @@ public class EpubReader {
 		result.setOpfResource(packageResource);
 		Resource ncxResource = processNcxResource(packageResource, result);
 		result.setNcxResource(ncxResource);
+        Resource navResource = processNavResource(result);
+        result.setNavResource(navResource);
 		result = postProcessBook(result);
 		return result;
 	}
-	
 
-	/**
+    /**
 	 * Reads this EPUB without loading any resources into memory.
 	 * 
 	 * @param fileName the file to load
@@ -98,6 +95,8 @@ public class EpubReader {
 		result.setOpfResource(packageResource);
 		Resource ncxResource = processNcxResource(packageResource, result);
 		result.setNcxResource(ncxResource);
+        Resource navResource = processNavResource(result);
+        result.setNavResource(navResource);
 		result = postProcessBook(result);
 		return result;
 	}
@@ -112,6 +111,10 @@ public class EpubReader {
 	private Resource processNcxResource(Resource packageResource, Book book) {
 		return NCXDocument.read(book, this);
 	}
+
+    private Resource processNavResource(Book book) {
+        return NavDocument.read(book);
+    }
 
 	private Resource processPackageResource(String packageResourceHref, Book book, Resources resources) {
 		Resource packageResource = resources.remove(packageResourceHref);

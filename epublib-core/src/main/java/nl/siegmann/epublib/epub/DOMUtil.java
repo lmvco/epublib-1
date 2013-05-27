@@ -1,15 +1,10 @@
 package nl.siegmann.epublib.epub;
 
+import nl.siegmann.epublib.util.StringUtil;
+import org.w3c.dom.*;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import nl.siegmann.epublib.util.StringUtil;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Text;
 
 /**
  * Utility methods for working with the DOM.

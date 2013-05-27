@@ -297,13 +297,16 @@ public class Book implements Serializable {
 	
 	private static final long serialVersionUID = 2068355170895770100L;
 
+    private Version version = Version.V2;
 	private Resources resources = new Resources();
 	private Metadata metadata = new Metadata();
 	private Spine spine = new Spine();
 	private TableOfContents tableOfContents = new TableOfContents();
 	private Guide guide = new Guide();
+    private Manifest manifest = new Manifest();
 	private Resource opfResource;
 	private Resource ncxResource;
+    private Resource navResource;
 	private Resource coverImage;
 	
 	/**
@@ -360,9 +363,16 @@ public class Book implements Serializable {
 	public void setMetadata(Metadata metadata) {
 		this.metadata = metadata;
 	}
-	
 
-	public void setResources(Resources resources) {
+    public Version getVersion() {
+        return version;
+    }
+
+    public void setVersion(Version version) {
+        this.version = version;
+    }
+
+    public void setResources(Resources resources) {
 		this.resources = resources;
 	}
 
@@ -512,7 +522,15 @@ public class Book implements Serializable {
 		}
 	}
 
-	public Resource getOpfResource() {
+    public Manifest getManifest() {
+        return manifest;
+    }
+
+    public void setManifest(Manifest manifest) {
+        this.manifest = manifest;
+    }
+
+    public Resource getOpfResource() {
 		return opfResource;
 	}
 	
@@ -527,5 +545,13 @@ public class Book implements Serializable {
 	public Resource getNcxResource() {
 		return ncxResource;
 	}
+
+    public Resource getNavResource() {
+        return navResource;
+    }
+
+    public void setNavResource(Resource navResource) {
+        this.navResource = navResource;
+    }
 }
 

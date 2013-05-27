@@ -29,6 +29,8 @@ public class TableOfContents implements Serializable {
 	private static final long serialVersionUID = -3147391239966275152L;
 	
 	public static final String DEFAULT_PATH_SEPARATOR = "/";
+
+    private String title;
 	
 	private List<TOCReference> tocReferences;
 
@@ -246,4 +248,12 @@ public class TableOfContents implements Serializable {
 		}
 		return currentDepth + maxChildDepth;
 	}
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }

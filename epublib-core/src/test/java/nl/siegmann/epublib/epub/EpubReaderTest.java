@@ -1,12 +1,14 @@
 package nl.siegmann.epublib.epub;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-
 import junit.framework.TestCase;
 import nl.siegmann.epublib.domain.Book;
 import nl.siegmann.epublib.domain.Resource;
 import nl.siegmann.epublib.service.MediatypeService;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class EpubReaderTest extends TestCase {
 	
@@ -75,4 +77,21 @@ public class EpubReaderTest extends TestCase {
 			assertTrue(false);
 		}
 	}
+
+    public static void main(String[] args) throws IOException {
+        Book book = new EpubReader().readEpub(new FileInputStream("F:\\TDDOWNLOAD\\epub3\\epub3.epub"));
+        System.out.println(book.getTitle());
+        System.out.println(book.getMetadata().getIdentifiers());
+        System.out.println(book.getMetadata().getAuthors());
+        System.out.println(book.getMetadata().getDates());
+        System.out.println(book.getMetadata().getOtherProperties().get("dcterms:modified"));
+        System.out.println(book.getMetadata().getPublishers());
+        System.out.println(book.getCoverImage());
+        System.out.println(book.getOpfResource().getHref());
+        System.out.println(book.getMetadata().getLanguage());
+        System.out.println(book.getMetadata().getOtherProperties());
+        System.out.println(book.getNcxResource());
+        System.out.println(book.getVersion());
+
+    }
 }

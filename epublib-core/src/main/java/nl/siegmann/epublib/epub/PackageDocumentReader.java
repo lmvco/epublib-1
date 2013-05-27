@@ -1,38 +1,22 @@
 package nl.siegmann.epublib.epub;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.xml.parsers.ParserConfigurationException;
-
 import nl.siegmann.epublib.Constants;
-import nl.siegmann.epublib.domain.Book;
-import nl.siegmann.epublib.domain.Guide;
-import nl.siegmann.epublib.domain.GuideReference;
-import nl.siegmann.epublib.domain.MediaType;
-import nl.siegmann.epublib.domain.Resource;
-import nl.siegmann.epublib.domain.Resources;
-import nl.siegmann.epublib.domain.Spine;
-import nl.siegmann.epublib.domain.SpineReference;
+import nl.siegmann.epublib.domain.*;
 import nl.siegmann.epublib.service.MediatypeService;
 import nl.siegmann.epublib.util.ResourceUtil;
 import nl.siegmann.epublib.util.StringUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.*;
 
 /**
  * Reads the opf package document as defined by namespace http://www.idpf.org/2007/opf
@@ -50,23 +34,30 @@ public class PackageDocumentReader extends PackageDocumentBase {
 		Document packageDocument = ResourceUtil.getAsDocument(packageResource);
 		String packageHref = packageResource.getHref();
 		resources = fixHrefs(packageHref, resources);
-		readGuide(packageDocument, epubReader, book, resources);
+        readVersion(packageDocument, book);
+        readGuide(packageDocument, epubReader, book, resources);
 		
 		// Books sometimes use non-identifier ids. We map these here to legal ones
 		Map<String, String> idMapping = new HashMap<String, String>();
 		
-		resources = readManifest(packageDocument, packageHref, epubReader, resources, idMapping);
-		book.setResources(resources);
+		readManifest(packageDocument, resources, book, idMapping);
 		readCover(packageDocument, book);
 		book.setMetadata(PackageDocumentMetadataReader.readMetadata(packageDocument, book.getResources()));
 		book.setSpine(readSpine(packageDocument, epubReader, book.getResources(), idMapping));
+        book.setNavResource(readNav(book.getManifest()));
 		
 		// if we did not find a cover page then we make the first page of the book the cover page
 		if (book.getCoverPage() == null && book.getSpine().size() > 0) {
 			book.setCoverPage(book.getSpine().getResource(0));
 		}
 	}
-	
+
+    private static void readVersion(Document packageDocument, Book book) {
+        String version = packageDocument.getDocumentElement().getAttribute(OPFAttributes.version);
+        if (StringUtil.isNotBlank(version))
+            book.setVersion(Version.findVersion(version));
+    }
+
 //	private static Resource readCoverImage(Element metadataElement, Resources resources) {
 //		String coverResourceId = DOMUtil.getFindAttributeValue(metadataElement.getOwnerDocument(), NAMESPACE_OPF, OPFTags.meta, OPFAttributes.name, OPFValues.meta_cover, OPFAttributes.content);
 //		if (StringUtil.isBlank(coverResourceId)) {
@@ -75,17 +66,53 @@ public class PackageDocumentReader extends PackageDocumentBase {
 //		Resource coverResource = resources.getByIdOrHref(coverResourceId);
 //		return coverResource;
 //	}
-	
 
-	
-	/**
+    public static void readManifest(Document packageDocument, Resources resources, Book book, Map<String, String> idMapping) {
+        Element manifestElement = DOMUtil.getFirstElementByTagNameNS(packageDocument.getDocumentElement(), NAMESPACE_OPF, OPFTags.manifest);
+        if(manifestElement == null) {
+            log.error("Package document does not contain element " + OPFTags.manifest);
+            return;
+        }
+
+        Manifest manifest = book.getManifest();
+        book.setResources(manifest.getResources());
+
+        NodeList itemElements = manifestElement.getElementsByTagNameNS(NAMESPACE_OPF, OPFTags.item);
+        for(int i = 0; i < itemElements.getLength(); i++) {
+            Element itemElement = (Element) itemElements.item(i);
+            String id = DOMUtil.getAttribute(itemElement, NAMESPACE_OPF, OPFAttributes.id);
+            String href = DOMUtil.getAttribute(itemElement, NAMESPACE_OPF, OPFAttributes.href);
+            String properties = DOMUtil.getAttribute(itemElement, NAMESPACE_OPF, OPFAttributes.properties);
+            try {
+                href = URLDecoder.decode(href, Constants.CHARACTER_ENCODING);
+            } catch (UnsupportedEncodingException e) {
+                log.error(e.getMessage());
+            }
+            String mediaTypeName = DOMUtil.getAttribute(itemElement, NAMESPACE_OPF, OPFAttributes.media_type);
+            Resource resource = resources.remove(href);
+            if(resource == null) {
+                log.error("resource with href '" + href + "' not found");
+                continue;
+            }
+            resource.setId(id);
+            MediaType mediaType = MediatypeService.getMediaTypeByName(mediaTypeName);
+            if(mediaType != null) {
+                resource.setMediaType(mediaType);
+            }
+            manifest.addReference(new ManifestItemReference(resource, ManifestItemProperties.findProperties(properties)));
+            idMapping.put(id, resource.getId());
+        }
+    }
+
+
+    /**
 	 * Reads the manifest containing the resource ids, hrefs and mediatypes.
 	 *  
 	 * @param packageDocument
 	 * @param packageHref
 	 * @param epubReader
-	 * @param book
-	 * @param resourcesByHref
+	 * @param resources
+	 * @param idMapping
 	 * @return a Map with resources, with their id's as key.
 	 */
 	private static Resources readManifest(Document packageDocument, String packageHref,
@@ -101,7 +128,8 @@ public class PackageDocumentReader extends PackageDocumentBase {
 			Element itemElement = (Element) itemElements.item(i);
 			String id = DOMUtil.getAttribute(itemElement, NAMESPACE_OPF, OPFAttributes.id);
 			String href = DOMUtil.getAttribute(itemElement, NAMESPACE_OPF, OPFAttributes.href);
-			try {
+            String properties = DOMUtil.getAttribute(itemElement, NAMESPACE_OPF, OPFAttributes.properties);
+            try {
 				href = URLDecoder.decode(href, Constants.CHARACTER_ENCODING);
 			} catch (UnsupportedEncodingException e) {
 				log.error(e.getMessage());
@@ -201,8 +229,8 @@ public class PackageDocumentReader extends PackageDocumentBase {
 	 * 
 	 * @param packageDocument
 	 * @param epubReader
-	 * @param book
-	 * @param resourcesById
+	 * @param resources
+	 * @param idMapping
 	 * @return
 	 */
 	private static Spine readSpine(Document packageDocument, EpubReader epubReader, Resources resources, Map<String, String> idMapping) {
@@ -243,6 +271,15 @@ public class PackageDocumentReader extends PackageDocumentBase {
 		return result;
 	}
 
+    private static Resource readNav(Manifest manifest) {
+        for (ManifestItemReference reference : manifest.getReferences()) {
+            if (reference.getProperties() == ManifestItemProperties.NAV) {
+                return reference.getResource();
+            }
+        }
+        return null;
+    }
+
 	/**
 	 * Creates a spine out of all resources in the resources.
 	 * The generated spine consists of all XHTML pages in order of their href.
@@ -274,7 +311,7 @@ public class PackageDocumentReader extends PackageDocumentBase {
 	 * We try the given attribute value, some often-used ones and finally look through all resources for the first resource with the table of contents mimetype.
 	 * 
 	 * @param spineElement
-	 * @param resourcesById
+	 * @param resources
 	 * @return
 	 */
 	private static Resource findTableOfContentsResource(Element spineElement, Resources resources) {
@@ -317,7 +354,7 @@ public class PackageDocumentReader extends PackageDocumentBase {
 	 * @return
 	 */
 	// package
-	static Set<String> findCoverHrefs(Document packageDocument) {
+	static Set<String> findCoverHrefs(Document packageDocument, Manifest manifest) {
 		
 		Set<String> result = new HashSet<String>();
 		
@@ -340,10 +377,16 @@ public class PackageDocumentReader extends PackageDocumentBase {
 		String coverHref = DOMUtil.getFindAttributeValue(packageDocument, NAMESPACE_OPF,
 											OPFTags.reference, OPFAttributes.type, OPFValues.reference_cover,
 											OPFAttributes.href);
-		if (StringUtil.isNotBlank(coverHref)) {
+        if (StringUtil.isNotBlank(coverHref)) {
 			result.add(coverHref);
 		}
-		return result;
+
+        for (ManifestItemReference reference : manifest.getReferences()) {
+            if (reference.getProperties() == ManifestItemProperties.COVER_IMAGE) {
+                result.add(reference.getResource().getHref());
+            }
+        }
+        return result;
 	}
 
 	/**
@@ -351,12 +394,11 @@ public class PackageDocumentReader extends PackageDocumentBase {
 	 * Keeps the cover resource in the resources map
 	 * @param packageDocument
 	 * @param book
-	 * @param resources
 	 * @return
 	 */
 	private static void readCover(Document packageDocument, Book book) {
 		
-		Collection<String> coverHrefs = findCoverHrefs(packageDocument);
+		Collection<String> coverHrefs = findCoverHrefs(packageDocument, book.getManifest());
 		for (String coverHref: coverHrefs) {
 			Resource resource = book.getResources().getByHref(coverHref);
 			if (resource == null) {

@@ -97,8 +97,8 @@ public class NCXDocument {
 		}
 		return ncxResource;
 	}
-	
-	private static List<TOCReference> readTOCReferences(NodeList navpoints, Book book) {
+
+    private static List<TOCReference> readTOCReferences(NodeList navpoints, Book book) {
 		if(navpoints == null) {
 			return new ArrayList<TOCReference>();
 		}

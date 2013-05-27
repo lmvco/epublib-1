@@ -68,7 +68,9 @@ public class PackageDocumentBase {
 		String version = "version";
 		String scheme = "scheme";
 		String property = "property";
-	}
+		String properties = "properties";
+        String modified = "dcterms:modified";
+    }
 	
 	protected interface OPFValues {
 		String meta_cover = "cover";
