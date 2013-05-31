@@ -58,7 +58,7 @@ public class EpubReader {
 	 * @return
 	 * @throws IOException
 	 */
-	public Book readEpubLazy( String fileName, String encoding, List<MediaType> lazyLoadedTypes ) throws IOException {
+	public Book readEpubLazy( String fileName, String encoding, List<MediaTypeProperty> lazyLoadedTypes ) throws IOException {
 		Book result = new Book();
 		Resources resources = readLazyResources(fileName, encoding, lazyLoadedTypes);
 		handleMimeType(result, resources);
@@ -152,7 +152,7 @@ public class EpubReader {
 	}
 	
 	private Resources readLazyResources( String fileName, String defaultHtmlEncoding,
-			List<MediaType> lazyLoadedTypes) throws IOException {		
+			List<MediaTypeProperty> lazyLoadedTypes) throws IOException {
 				
 		ZipInputStream in = new ZipInputStream(new FileInputStream(fileName));
 		
@@ -163,17 +163,17 @@ public class EpubReader {
 			}
 			
 			String href = zipEntry.getName();
-			MediaType mediaType = MediatypeService.determineMediaType(href);			
+			MediaTypeProperty mediaTypeProperty = MediatypeService.determineMediaType(href);
 			
 			Resource resource;
 			
-			if ( lazyLoadedTypes.contains(mediaType) ) {
+			if ( lazyLoadedTypes.contains(mediaTypeProperty) ) {
 				resource = new Resource(fileName, zipEntry.getSize(), href);								
 			} else {			
 				resource = new Resource( in, fileName, (int) zipEntry.getSize(), href );
 			}
 			
-			if(resource.getMediaType() == MediatypeService.XHTML) {
+			if(resource.getMediaTypeProperty() == MediatypeService.XHTML) {
 				resource.setInputEncoding(defaultHtmlEncoding);
 			}
 			result.add(resource);
@@ -189,7 +189,7 @@ public class EpubReader {
 				continue;
 			}
 			Resource resource = ResourceUtil.createResource(zipEntry, in);
-			if(resource.getMediaType() == MediatypeService.XHTML) {
+			if(resource.getMediaTypeProperty() == MediatypeService.XHTML) {
 				resource.setInputEncoding(defaultHtmlEncoding);
 			}
 			result.add(resource);

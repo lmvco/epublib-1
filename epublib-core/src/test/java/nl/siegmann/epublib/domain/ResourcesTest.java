@@ -11,7 +11,7 @@ public class ResourcesTest extends TestCase {
 		resources.add(new Resource("bar".getBytes(), MediatypeService.XHTML));
 		assertEquals(0, resources.getResourcesByMediaType(MediatypeService.PNG).size());
 		assertEquals(2, resources.getResourcesByMediaType(MediatypeService.XHTML).size());
-		assertEquals(2, resources.getResourcesByMediaTypes(new MediaType[] {MediatypeService.XHTML}).size());
+		assertEquals(2, resources.getResourcesByMediaTypes(new MediaTypeProperty[] {MediatypeService.XHTML}).size());
 	}
 
 	public void testGetResourcesByMediaType2() {
@@ -21,8 +21,8 @@ public class ResourcesTest extends TestCase {
 		resources.add(new Resource("baz".getBytes(), MediatypeService.PNG));
 		assertEquals(2, resources.getResourcesByMediaType(MediatypeService.PNG).size());
 		assertEquals(1, resources.getResourcesByMediaType(MediatypeService.XHTML).size());
-		assertEquals(1, resources.getResourcesByMediaTypes(new MediaType[] {MediatypeService.XHTML}).size());
-		assertEquals(3, resources.getResourcesByMediaTypes(new MediaType[] {MediatypeService.XHTML, MediatypeService.PNG}).size());
-		assertEquals(3, resources.getResourcesByMediaTypes(new MediaType[] {MediatypeService.CSS, MediatypeService.XHTML, MediatypeService.PNG}).size());
+		assertEquals(1, resources.getResourcesByMediaTypes(new MediaTypeProperty[] {MediatypeService.XHTML}).size());
+		assertEquals(3, resources.getResourcesByMediaTypes(new MediaTypeProperty[] {MediatypeService.XHTML, MediatypeService.PNG}).size());
+		assertEquals(3, resources.getResourcesByMediaTypes(new MediaTypeProperty[] {MediatypeService.CSS, MediatypeService.XHTML, MediatypeService.PNG}).size());
 	}
 }

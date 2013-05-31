@@ -303,11 +303,15 @@ public class Book implements Serializable {
 	private Spine spine = new Spine();
 	private TableOfContents tableOfContents = new TableOfContents();
 	private Guide guide = new Guide();
+    private Bindings bindings = new Bindings();
     private Manifest manifest = new Manifest();
 	private Resource opfResource;
 	private Resource ncxResource;
     private Resource navResource;
 	private Resource coverImage;
+    // Package Identifier, changes when epub modified, contains Unique Identifier and last modified
+    private String uniqueId;
+    private String packageId;
 	
 	/**
 	 * Adds the resource to the table of contents of the book as a child section of the given parentSection
@@ -450,7 +454,7 @@ public class Book implements Serializable {
 	 * 
 	 * @return
 	 */
-	public String getTitle() {
+	public DcmesElement getTitle() {
 		return getMetadata().getFirstTitle();
 	}
 	
@@ -552,6 +556,30 @@ public class Book implements Serializable {
 
     public void setNavResource(Resource navResource) {
         this.navResource = navResource;
+    }
+
+    public Bindings getBindings() {
+        return bindings;
+    }
+
+    public void setBindings(Bindings bindings) {
+        this.bindings = bindings;
+    }
+
+    public String getUniqueId() {
+        return uniqueId;
+    }
+
+    public void setUniqueId(String uniqueId) {
+        this.uniqueId = uniqueId;
+    }
+
+    public String getPackageId() {
+        return packageId;
+    }
+
+    public void setPackageId(String packageId) {
+        this.packageId = packageId;
     }
 }
 

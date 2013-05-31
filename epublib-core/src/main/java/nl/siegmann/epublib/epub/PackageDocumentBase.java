@@ -7,10 +7,11 @@ package nl.siegmann.epublib.epub;
  * @author paul
  *
  */
-public class PackageDocumentBase {
+public abstract class PackageDocumentBase {
 	public static final String BOOK_ID_ID = "BookId";
 	public static final String NAMESPACE_OPF = "http://www.idpf.org/2007/opf";
 	public static final String NAMESPACE_DUBLIN_CORE = "http://purl.org/dc/elements/1.1/";
+    public static final String EMPTY_NAMESPACE_PREFIX = "";
 	public static final String PREFIX_DUBLIN_CORE = "dc";
 	public static final String PREFIX_OPF = "opf";
 	public static final String dateFormat = "yyyy-MM-dd";
@@ -31,12 +32,22 @@ public class PackageDocumentBase {
         String relation = "relation";
         String coverage = "coverage";
         String rights = "rights";
+        String meta = "meta";
 	}
 	
 	protected interface DCAttributes {
 		String scheme = "scheme";
 		String id = "id";
-	}
+		String lang = "xml:lang";
+		String dir = "dir";
+        String refines = "refines";
+        String property = "property";
+        String link = "link";
+        String href = "href";
+        String rel = "rel";
+        String mediaType = "media-type";
+        String modified = "dcterms:modified";
+    }
 	
 	protected interface OPFTags {
 		String metadata = "metadata";
@@ -48,6 +59,9 @@ public class PackageDocumentBase {
 		String reference = "reference";
 		String guide = "guide";
 		String item = "item";
+		String link = "link";
+		String bindings = "bindings";
+		String mediaType = "mediaType";
 	}
 	
 	protected interface OPFAttributes {
@@ -63,13 +77,17 @@ public class PackageDocumentBase {
 		String file_as = "file-as";
 		String id = "id";
 		String media_type = "media-type";
+		String handler = "handler";
 		String title = "title";
 		String toc = "toc";
 		String version = "version";
 		String scheme = "scheme";
 		String property = "property";
 		String properties = "properties";
-        String modified = "dcterms:modified";
+		String fallback = "fallback";
+		String mediaOverlay = "media-overlay";
+		String pageProgressionDirection = "media-page-progression-direction";
+        String lang = "xml:lang";
     }
 	
 	protected interface OPFValues {
@@ -77,5 +95,6 @@ public class PackageDocumentBase {
 		String reference_cover = "cover";
 		String no = "no";
 		String generator = "generator";
+		String tocValue = "toc.ncx";
 	}
 }

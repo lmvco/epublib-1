@@ -1,9 +1,8 @@
 package nl.siegmann.epublib.domain;
 
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
-
 import nl.siegmann.epublib.epub.PackageDocumentBase;
+
+import java.text.SimpleDateFormat;
 
 /**
  * A Date used by the book's metadata.
@@ -13,7 +12,7 @@ import nl.siegmann.epublib.epub.PackageDocumentBase;
  * @author paul
  *
  */
-public class Date implements Serializable {
+public class Date extends DcmesElement {
 	/**
 	 * 
 	 */

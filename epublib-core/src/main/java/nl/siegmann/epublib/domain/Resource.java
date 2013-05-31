@@ -29,7 +29,7 @@ public class Resource implements Serializable {
 	private String id;
 	private String title;
 	private String href;
-	private MediaType mediaType;
+	private MediaTypeProperty mediaTypeProperty;
 	private String inputEncoding = Constants.CHARACTER_ENCODING;
 	private byte[] data;
 		
@@ -56,10 +56,10 @@ public class Resource implements Serializable {
 	 * Assumes that if the data is of a text type (html/css/etc) then the encoding will be UTF-8
 	 * 
 	 * @param data The Resource's contents
-	 * @param mediaType The MediaType of the Resource
+	 * @param mediaTypeProperty The MediaType of the Resource
 	 */
-	public Resource(byte[] data, MediaType mediaType) {
-		this(null, data, null, mediaType);
+	public Resource(byte[] data, MediaTypeProperty mediaTypeProperty) {
+		this(null, data, null, mediaTypeProperty);
 	}
 	
 	/**
@@ -152,10 +152,10 @@ public class Resource implements Serializable {
 	 * @param id The id of the Resource. Internal use only. Will be auto-generated if it has a null-value.
 	 * @param data The Resource's contents
 	 * @param href The location of the resource within the epub. Example: "chapter1.html".
-	 * @param mediaType The resources MediaType
+	 * @param mediaTypeProperty The resources MediaType
 	 */
-	public Resource(String id, byte[] data, String href, MediaType mediaType) {
-		this(id, data, href, mediaType, Constants.CHARACTER_ENCODING);
+	public Resource(String id, byte[] data, String href, MediaTypeProperty mediaTypeProperty) {
+		this(id, data, href, mediaTypeProperty, Constants.CHARACTER_ENCODING);
 	}
 
 
@@ -166,13 +166,13 @@ public class Resource implements Serializable {
 	 * @param id The id of the Resource. Internal use only. Will be auto-generated if it has a null-value.
 	 * @param data The Resource's contents
 	 * @param href The location of the resource within the epub. Example: "chapter1.html".
-	 * @param mediaType The resources MediaType
+	 * @param mediaTypeProperty The resources MediaType
 	 * @param inputEncoding If the data is of a text type (html/css/etc) then it will use the given inputEncoding.
 	 */
-	public Resource(String id, byte[] data, String href, MediaType mediaType, String inputEncoding) {
+	public Resource(String id, byte[] data, String href, MediaTypeProperty mediaTypeProperty, String inputEncoding) {
 		this.id = id;
 		this.href = href;
-		this.mediaType = mediaType;
+		this.mediaTypeProperty = mediaTypeProperty;
 		this.inputEncoding = inputEncoding;
 		this.data = data;
 	}
@@ -370,12 +370,12 @@ public class Resource implements Serializable {
 	 * 
 	 * @return
 	 */
-	public MediaType getMediaType() {
-		return mediaType;
+	public MediaTypeProperty getMediaTypeProperty() {
+		return mediaTypeProperty;
 	}
 	
-	public void setMediaType(MediaType mediaType) {
-		this.mediaType = mediaType;
+	public void setMediaTypeProperty(MediaTypeProperty mediaTypeProperty) {
+		this.mediaTypeProperty = mediaTypeProperty;
 	}
 
 	public void setTitle(String title) {
@@ -386,7 +386,7 @@ public class Resource implements Serializable {
 		return StringUtil.toString("id", id,
 				"title", title,
 				"encoding", inputEncoding,
-				"mediaType", mediaType,
+				"mediaType", mediaTypeProperty,
 				"href", href,
 				"size", (data == null ? 0 : data.length));
 	}

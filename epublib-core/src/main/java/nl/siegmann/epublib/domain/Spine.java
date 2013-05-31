@@ -23,6 +23,8 @@ public class Spine implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 3878483958947357246L;
+    private String id;
+    private PageProgressionDirection direction;
 	private Resource tocResource;
 	private List<SpineReference> spineReferences;
 
@@ -185,4 +187,20 @@ public class Spine implements Serializable {
 	public boolean isEmpty() {
 		return spineReferences.isEmpty();
 	}
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public PageProgressionDirection getDirection() {
+        return direction;
+    }
+
+    public void setDirection(PageProgressionDirection direction) {
+        this.direction = direction;
+    }
 }

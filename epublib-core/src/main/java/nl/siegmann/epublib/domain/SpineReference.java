@@ -16,7 +16,10 @@ public class SpineReference extends ResourceReference implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -7921609197351510248L;
+    private String id;
+    private String idref;
 	private boolean linear = true;
+    private SpineItemRefProperties properties;
 	
 	public SpineReference(Resource resource) {
 		this(resource, true);
@@ -53,4 +56,27 @@ public class SpineReference extends ResourceReference implements Serializable {
 		this.linear = linear;
 	}
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getIdref() {
+        return idref;
+    }
+
+    public void setIdref(String idref) {
+        this.idref = idref;
+    }
+
+    public SpineItemRefProperties getProperties() {
+        return properties;
+    }
+
+    public void setProperties(SpineItemRefProperties properties) {
+        this.properties = properties;
+    }
 }

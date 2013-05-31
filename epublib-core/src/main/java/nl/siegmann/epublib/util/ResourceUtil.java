@@ -12,7 +12,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.ParserConfigurationException;
 
 import nl.siegmann.epublib.Constants;
-import nl.siegmann.epublib.domain.MediaType;
+import nl.siegmann.epublib.domain.MediaTypeProperty;
 import nl.siegmann.epublib.domain.Resource;
 import nl.siegmann.epublib.epub.EpubProcessorSupport;
 import nl.siegmann.epublib.service.MediatypeService;
@@ -33,9 +33,9 @@ public class ResourceUtil {
 		if (file == null) {
 			return null;
 		}
-		MediaType mediaType = MediatypeService.determineMediaType(file.getName());
+		MediaTypeProperty mediaTypeProperty = MediatypeService.determineMediaType(file.getName());
 		byte[] data = IOUtil.toByteArray(new FileInputStream(file));
-		Resource result = new Resource(data, mediaType);
+		Resource result = new Resource(data, mediaTypeProperty);
 		return result;
 	}
 	

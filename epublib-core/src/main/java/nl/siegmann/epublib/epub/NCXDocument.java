@@ -1,5 +1,20 @@
 package nl.siegmann.epublib.epub;
 
+import nl.siegmann.epublib.Constants;
+import nl.siegmann.epublib.domain.*;
+import nl.siegmann.epublib.service.MediatypeService;
+import nl.siegmann.epublib.util.ResourceUtil;
+import nl.siegmann.epublib.util.StringUtil;
+import org.apache.commons.io.FilenameUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xmlpull.v1.XmlSerializer;
+
+import javax.xml.stream.FactoryConfigurationError;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -8,28 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-
-import javax.xml.stream.FactoryConfigurationError;
-
-import nl.siegmann.epublib.Constants;
-import nl.siegmann.epublib.domain.Author;
-import nl.siegmann.epublib.domain.Book;
-import nl.siegmann.epublib.domain.Identifier;
-import nl.siegmann.epublib.domain.Resource;
-import nl.siegmann.epublib.domain.TOCReference;
-import nl.siegmann.epublib.domain.TableOfContents;
-import nl.siegmann.epublib.service.MediatypeService;
-import nl.siegmann.epublib.util.ResourceUtil;
-import nl.siegmann.epublib.util.StringUtil;
-import org.apache.commons.io.FilenameUtils;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xmlpull.v1.XmlSerializer;
 
 /**
  * Writes the ncx document as defined by namespace http://www.daisy.org/z3986/2005/ncx/
@@ -80,7 +73,7 @@ public class NCXDocument {
 	public static Resource read(Book book, EpubReader epubReader) {
 		Resource ncxResource = null;
 		if(book.getSpine().getTocResource() == null) {
-			log.error("Book does not contain a table of contents file");
+//			log.error("Book does not contain a table of contents file");
 			return ncxResource;
 		}
 		try {
@@ -177,7 +170,7 @@ public class NCXDocument {
 	public static Resource createNCXResource(Book book) throws IllegalArgumentException, IllegalStateException, IOException {
 		return createNCXResource(book.getMetadata().getIdentifiers(), book.getTitle(), book.getMetadata().getAuthors(), book.getTableOfContents());
 	}
-	public static Resource createNCXResource(List<Identifier> identifiers, String title, List<Author> authors, TableOfContents tableOfContents) throws IllegalArgumentException, IllegalStateException, IOException {
+	public static Resource createNCXResource(List<Identifier> identifiers, DcmesElement title, List<Author> authors, TableOfContents tableOfContents) throws IllegalArgumentException, IllegalStateException, IOException {
 		ByteArrayOutputStream data = new ByteArrayOutputStream();
 		XmlSerializer out = EpubProcessorSupport.createXmlSerializer(data);
 		write(out, identifiers, title, authors, tableOfContents);
@@ -185,7 +178,7 @@ public class NCXDocument {
 		return resource;
 	}	
 	
-	public static void write(XmlSerializer serializer, List<Identifier> identifiers, String title, List<Author> authors, TableOfContents tableOfContents) throws IllegalArgumentException, IllegalStateException, IOException {
+	public static void write(XmlSerializer serializer, List<Identifier> identifiers, DcmesElement title, List<Author> authors, TableOfContents tableOfContents) throws IllegalArgumentException, IllegalStateException, IOException {
 		serializer.startDocument(Constants.CHARACTER_ENCODING, false);
 		serializer.setPrefix(EpubWriter.EMPTY_NAMESPACE_PREFIX, NAMESPACE_NCX);
 		serializer.startTag(NAMESPACE_NCX, NCXTags.ncx);
@@ -208,7 +201,7 @@ public class NCXDocument {
 		serializer.startTag(NAMESPACE_NCX, NCXTags.docTitle);
 		serializer.startTag(NAMESPACE_NCX, NCXTags.text);
 		// write the first title
-		serializer.text(StringUtil.defaultIfNull(title));
+		serializer.text(StringUtil.defaultIfNull(title.getValue()));
 		serializer.endTag(NAMESPACE_NCX, NCXTags.text);
 		serializer.endTag(NAMESPACE_NCX, NCXTags.docTitle);
 		

@@ -1,15 +1,13 @@
 package nl.siegmann.epublib.domain;
 
+import nl.siegmann.epublib.service.MediatypeService;
+import nl.siegmann.epublib.util.StringUtil;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.xml.namespace.QName;
-
-import nl.siegmann.epublib.service.MediatypeService;
-import nl.siegmann.epublib.util.StringUtil;
 
 /**
  * A Book's collection of Metadata.
@@ -31,16 +29,19 @@ public class Metadata implements Serializable {
 	private List<Author> authors = new ArrayList<Author>();
 	private List<Author> contributors = new ArrayList<Author>();
 	private List<Date> dates = new ArrayList<Date>();
-	private String language = DEFAULT_LANGUAGE;
-	private Map<QName, String> otherProperties = new HashMap<QName, String>();
-	private List<String> rights = new ArrayList<String>();
-	private List<String> titles = new ArrayList<String>();
+	private List<DcmesElement> languages = new ArrayList<DcmesElement>();
+	private List<Meta> metas = new ArrayList<Meta>();
+	private List<DcmesElement> rights = new ArrayList<DcmesElement>();
+	private List<DcmesElement> titles = new ArrayList<DcmesElement>();
 	private List<Identifier> identifiers = new ArrayList<Identifier>();
-	private List<String> subjects = new ArrayList<String>();
+	private List<DcmesElement> subjects = new ArrayList<DcmesElement>();
 	private String format = MediatypeService.EPUB.getName();
-	private List<String> types = new ArrayList<String>();
-	private List<String> descriptions = new ArrayList<String>();
-	private List<String> publishers = new ArrayList<String>();
+	private List<DcmesElement> types = new ArrayList<DcmesElement>();
+	private List<DcmesElement> descriptions = new ArrayList<DcmesElement>();
+	private List<DcmesElement> publishers = new ArrayList<DcmesElement>();
+    private DcmesElement source;
+    private List<Link> links = new ArrayList<Link>();
+    private Map<String, DcmesElement> dcmesElementMap = new HashMap<String, DcmesElement>();
 	private Resource coverImage;
 
 	public Metadata() {
@@ -57,11 +58,11 @@ public class Metadata implements Serializable {
 	 * 
 	 * @return
 	 */
-	public Map<QName, String> getOtherProperties() {
-		return otherProperties;
+	public List<Meta> getMetas() {
+		return metas;
 	}
-	public void setOtherProperties(Map<QName, String> otherProperties) {
-		this.otherProperties = otherProperties;
+	public void setMetas(List<Meta> metas) {
+		this.metas = metas;
 	}
 	
 	public Date addDate(Date date) {
@@ -99,23 +100,25 @@ public class Metadata implements Serializable {
 	public void setContributors(List<Author> contributors) {
 		this.contributors = contributors;
 	}
-	
-	public String getLanguage() {
-		return language;
-	}
-	public void setLanguage(String language) {
-		this.language = language;
-	}
-	public List<String> getSubjects() {
+
+    public List<DcmesElement> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(List<DcmesElement> languages) {
+        this.languages = languages;
+    }
+
+    public List<DcmesElement> getSubjects() {
 		return subjects;
 	}
-	public void setSubjects(List<String> subjects) {
+	public void setSubjects(List<DcmesElement> subjects) {
 		this.subjects = subjects;
 	}
-	public void setRights(List<String> rights) {
+	public void setRights(List<DcmesElement> rights) {
 		this.rights = rights;
 	}
-	public List<String> getRights() {
+	public List<DcmesElement> getRights() {
 		return rights;
 	}
 	
@@ -126,49 +129,49 @@ public class Metadata implements Serializable {
 	 * 
 	 * @return
 	 */
-	public String getFirstTitle() {
+	public DcmesElement getFirstTitle() {
 		if (titles == null || titles.isEmpty()) {
-			return "";
+			return null;
 		}
-		for (String title: titles) {
-			if (StringUtil.isNotBlank(title)) {
+		for (DcmesElement title: titles) {
+			if (title != null) {
 				return title;
 			}
 		}
-		return "";
+		return null;
 	}
 	
 	
-	public String addTitle(String title) {
+	public DcmesElement addTitle(DcmesElement title) {
 		this.titles.add(title);
 		return title;
 	}
-	public void setTitles(List<String> titles) {
+	public void setTitles(List<DcmesElement> titles) {
 		this.titles = titles;
 	}
-	public List<String> getTitles() {
+	public List<DcmesElement> getTitles() {
 		return titles;
 	}
 		
-	public String addPublisher(String publisher) {
+	public DcmesElement addPublisher(DcmesElement publisher) {
 		this.publishers.add(publisher);
 		return publisher;
 	}
-	public void setPublishers(List<String> publishers) {
+	public void setPublishers(List<DcmesElement> publishers) {
 		this.publishers = publishers;
 	}
-	public List<String> getPublishers() {
+	public List<DcmesElement> getPublishers() {
 		return publishers;
 	}
 	
-	public String addDescription(String description) {
+	public DcmesElement addDescription(DcmesElement description) {
 		this.descriptions.add(description);
 		return description;
 	}
-	public void setDescriptions(List<String> descriptions) {
+	public void setDescriptions(List<DcmesElement> descriptions) {
 		this.descriptions = descriptions;
 	}
-	public List<String> getDescriptions() {
+	public List<DcmesElement> getDescriptions() {
 		return descriptions;
 	}
 	
@@ -196,15 +199,41 @@ public class Metadata implements Serializable {
 		return format;
 	}
 
-	public String addType(String type) {
+	public DcmesElement addType(DcmesElement type) {
 		this.types.add(type);
 		return type;
 	}
 	
-	public List<String> getTypes() {
+	public List<DcmesElement> getTypes() {
 		return types;
 	}
-	public void setTypes(List<String> types) {
+	public void setTypes(List<DcmesElement> types) {
 		this.types = types;
 	}
+
+    public DcmesElement getSource() {
+        return source;
+    }
+
+    public void setSource(DcmesElement source) {
+        this.source = source;
+    }
+
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
+    }
+
+    public void addDcmesMap(String id, DcmesElement element) {
+        if (StringUtil.isNotBlank(id)) {
+            dcmesElementMap.put(id, element);
+        }
+    }
+
+    public Map<String, DcmesElement> getDcmesElementMap() {
+        return dcmesElementMap;
+    }
 }

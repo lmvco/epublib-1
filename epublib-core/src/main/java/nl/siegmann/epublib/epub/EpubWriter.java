@@ -1,22 +1,18 @@
 package nl.siegmann.epublib.epub;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.util.zip.CRC32;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
-
-import nl.siegmann.epublib.domain.Book;
-import nl.siegmann.epublib.domain.Resource;
+import nl.siegmann.epublib.domain.*;
+import nl.siegmann.epublib.epub.impl.Epub2PackageDocumentWriter;
+import nl.siegmann.epublib.epub.impl.Epub3PackageDocumentWriter;
 import nl.siegmann.epublib.service.MediatypeService;
 import nl.siegmann.epublib.util.IOUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xmlpull.v1.XmlSerializer;
+
+import java.io.*;
+import java.util.zip.CRC32;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 /**
  * Generates an epub file. Not thread-safe, single use object.
@@ -50,9 +46,21 @@ public class EpubWriter {
 		writeContainer(resultStream);
 		initTOCResource(book);
 		writeResources(book, resultStream);
-		writePackageDocument(book, resultStream);
+		writePackageDocument(book, resultStream, Version.V2);
 		resultStream.close();
 	}
+
+    public void writeEpub3(Book book, OutputStream out) throws IOException{
+        book = processBook(book);
+        ZipOutputStream resultStream = new ZipOutputStream(out);
+        writeMimeType(resultStream);
+        writeContainer(resultStream);
+        initTOCResource(book);
+        initNavResource(book);
+        writeResources(book, resultStream);
+        writePackageDocument(book, resultStream, Version.V3);
+        resultStream.close();
+    }
 
 	private Book processBook(Book book) {
 		if (bookProcessor != null) {
@@ -68,16 +76,31 @@ public class EpubWriter {
 			Resource currentTocResource = book.getSpine().getTocResource();
 			if (currentTocResource != null) {
 				book.getResources().remove(currentTocResource.getHref());
-			}
+                book.getManifest().removeManifestItem(currentTocResource.getHref());
+            }
 			book.getSpine().setTocResource(tocResource);
 			book.getResources().add(tocResource);
-		} catch (Exception e) {
+            book.getManifest().addReference(new ManifestItemReference(tocResource, null));
+        } catch (Exception e) {
 			log.error("Error writing table of contents: " + e.getClass().getName() + ": " + e.getMessage());
 		}
 	}
-	
 
-	private void writeResources(Book book, ZipOutputStream resultStream) throws IOException {
+    private void initNavResource(Book book) {
+        if (book.getNavResource() != null)
+            return;
+        Resource navResource;
+        try {
+            navResource = NavDocument.createNavResource(book);
+            book.getResources().add(navResource);
+            book.getManifest().addReference(new ManifestItemReference(navResource, ManifestItemProperties.NAV));
+        } catch (IOException e) {
+            log.error("Error writeing nav document: " + e.getClass().getName() + ": " + e.getMessage());
+        }
+    }
+
+
+    private void writeResources(Book book, ZipOutputStream resultStream) throws IOException {
 		for(Resource resource: book.getResources().getAll()) {
 			writeResource(resource, resultStream);
 		}
@@ -106,13 +129,18 @@ public class EpubWriter {
 	}
 	
 
-	private void writePackageDocument(Book book, ZipOutputStream resultStream) throws IOException {
+	private void writePackageDocument(Book book, ZipOutputStream resultStream, Version version) throws IOException {
 		resultStream.putNextEntry(new ZipEntry("OEBPS/content.opf"));
 		XmlSerializer xmlSerializer = EpubProcessorSupport.createXmlSerializer(resultStream);
-		PackageDocumentWriter.write(this, xmlSerializer, book);
+        PackageDocumentWriter writer;
+        if (version == Version.V2) {
+            writer = new Epub2PackageDocumentWriter(book, xmlSerializer);
+       } else {
+            writer = new Epub3PackageDocumentWriter(book, xmlSerializer);
+        }
+
+        writer.write();
 		xmlSerializer.flush();
-//		String resultAsString = result.toString();
-//		resultStream.write(resultAsString.getBytes(Constants.ENCODING));
 	}
 
 	/**

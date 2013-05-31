@@ -2,6 +2,7 @@ package nl.siegmann.epublib.epub;
 
 import nl.siegmann.epublib.Constants;
 import nl.siegmann.epublib.domain.*;
+import nl.siegmann.epublib.service.MediatypeService;
 import nl.siegmann.epublib.util.ResourceUtil;
 import nl.siegmann.epublib.util.StringUtil;
 import org.apache.commons.io.FilenameUtils;
@@ -12,12 +13,15 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import org.xmlpull.v1.XmlSerializer;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static nl.siegmann.epublib.epub.PackageDocumentBase.EMPTY_NAMESPACE_PREFIX;
+import static nl.siegmann.epublib.epub.PackageDocumentBase.NAMESPACE_OPF;
 
 /**
  * nav document read and write
@@ -28,8 +32,19 @@ import java.util.List;
 public class NavDocument {
     private static final Logger log = LoggerFactory.getLogger(NavDocument.class);
     public static final String NAMESPACE_HTML = "http://www.w3.org/1999/xhtml";
+    public static final String NAV_ITEM_ID = "nav";
+    public static final String DEFAULT_NAV_HREF = "nav.xhtml";
 
     private interface NAVTags {
+        String html = "html";
+        String head = "head";
+        String title = "title";
+        String meta = "meta";
+        String body = "body";
+        String section = "section";
+        String header = "header";
+        String h1 = "h1";
+        String h2 = "h2";
         String nav = "nav";
         String ol = "ol";
         String li = "li";
@@ -40,10 +55,13 @@ public class NavDocument {
     private interface NAVAttributes {
         String epubType = "epub:type";
         String href = "href";
+        String id = "id";
+        String charset = "charset";
     }
 
     private interface NAVAttributeValues {
         String toc = "toc";
+        String utf8 = "utf-8";
     }
 
     public static Resource read(Book book) {
@@ -138,16 +156,66 @@ public class NavDocument {
         return tocReference;
     }
 
-    public static void main(String[] args) throws IOException, SAXException {
-        Book book = new EpubReader().readEpub(new FileInputStream("F:\\TDDOWNLOAD\\epub3.epub"));
-        printToc(book.getTableOfContents().getTocReferences(), "");
-
+    public static Resource createNavResource(Book book) throws IOException {
+        ByteArrayOutputStream data = new ByteArrayOutputStream();
+        XmlSerializer out = EpubProcessorSupport.createXmlSerializer(data);
+        write(out, book);
+        out.flush();
+        return new Resource(NAV_ITEM_ID, data.toByteArray(), DEFAULT_NAV_HREF, MediatypeService.XHTML);
     }
 
-    private static void printToc(List<TOCReference> tocReferences, String iden) {
+    public static void write(XmlSerializer serializer, Book book) throws IOException {
+        serializer.startDocument(Constants.CHARACTER_ENCODING, false);
+        serializer.setPrefix("", NAMESPACE_HTML);
+        serializer.setPrefix("epub", NAMESPACE_OPF);
+        serializer.startTag(NAMESPACE_HTML, NAVTags.html);
+        serializer.startTag(NAMESPACE_HTML, NAVTags.head);
+        serializer.startTag(NAMESPACE_HTML, NAVTags.title);
+        serializer.text(book.getTitle().getValue());
+        serializer.endTag(NAMESPACE_HTML, NAVTags.title);
+        serializer.startTag(NAMESPACE_HTML, NAVTags.meta);
+        serializer.attribute(EMPTY_NAMESPACE_PREFIX, NAVAttributes.charset, NAVAttributeValues.utf8);
+        serializer.endTag(NAMESPACE_HTML, NAVTags.meta);
+        serializer.endTag(NAMESPACE_HTML, NAVTags.head);
+        serializer.startTag(NAMESPACE_HTML, NAVTags.body);
+        serializer.startTag(NAMESPACE_HTML, NAVTags.nav);
+        serializer.attribute(EMPTY_NAMESPACE_PREFIX, NAVAttributes.epubType, NAVAttributeValues.toc);
+        serializer.attribute(EMPTY_NAMESPACE_PREFIX, NAVAttributes.id, NAVAttributeValues.toc);
+        serializer.startTag(NAMESPACE_HTML, NAVTags.ol);
+        writeTOCReferences(serializer, book.getTableOfContents().getTocReferences());
+        serializer.endTag(NAMESPACE_HTML, NAVTags.ol);
+        serializer.endTag(NAMESPACE_HTML, NAVTags.nav);
+        serializer.endTag(NAMESPACE_HTML, NAVTags.body);
+        serializer.endTag(NAMESPACE_HTML, NAVTags.html);
+    }
+
+    public static void writeTOCReferences(XmlSerializer serializer, List<TOCReference> tocReferences) throws IOException {
         for (TOCReference tocReference : tocReferences) {
-            System.out.println(iden + tocReference.getTitle() + "^^^^^^" + tocReference.getResourceId());
-            printToc(tocReference.getChildren(), "--|" + iden);
+            if (tocReference.getChildren().size() > 0) {
+                if (StringUtil.isNotBlank(tocReference.getTitle())) {
+                    serializer.startTag(NAMESPACE_HTML, NAVTags.li);
+                    serializer.startTag(NAMESPACE_HTML, NAVTags.span);
+                    serializer.text(tocReference.getTitle());
+                    serializer.endTag(NAMESPACE_HTML, NAVTags.span);
+                    serializer.endTag(NAMESPACE_HTML, NAVTags.li);
+                }
+                serializer.startTag(NAMESPACE_HTML, NAVTags.ol);
+                writeTOCReferences(serializer, tocReference.getChildren());
+                serializer.endTag(NAMESPACE_HTML, NAVTags.ol);
+            } else {
+                serializer.startTag(NAMESPACE_HTML, NAVTags.li);
+                serializer.startTag(NAMESPACE_HTML, NAVTags.a);
+                serializer.attribute(EMPTY_NAMESPACE_PREFIX, NAVAttributes.href, tocReference.getCompleteHref());
+                serializer.text(tocReference.getTitle());
+                serializer.endTag(NAMESPACE_HTML, NAVTags.a);
+                serializer.endTag(NAMESPACE_HTML, NAVTags.li);
+            }
         }
+    }
+
+    public static void main(String[] args) throws IOException, SAXException {
+        Book book = new EpubReader().readEpub(new FileInputStream("F:\\TDDOWNLOAD\\epub3\\cc-shared-culture-20120130.epub"));
+        new EpubWriter().write(book, new FileOutputStream("F:\\TDDOWNLOAD\\epub3\\out.epub"));
+
     }
 }

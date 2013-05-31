@@ -5,10 +5,7 @@ import nl.siegmann.epublib.domain.Book;
 import nl.siegmann.epublib.domain.Resource;
 import nl.siegmann.epublib.service.MediatypeService;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class EpubReaderTest extends TestCase {
 	
@@ -70,7 +67,7 @@ public class EpubReaderTest extends TestCase {
 			assertEquals(1, readBook.getTableOfContents().size());
 			assertNotNull(readBook.getOpfResource());
 			assertNotNull(readBook.getNcxResource());
-			assertEquals(MediatypeService.NCX, readBook.getNcxResource().getMediaType());
+			assertEquals(MediatypeService.NCX, readBook.getNcxResource().getMediaTypeProperty());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -79,19 +76,9 @@ public class EpubReaderTest extends TestCase {
 	}
 
     public static void main(String[] args) throws IOException {
-        Book book = new EpubReader().readEpub(new FileInputStream("F:\\TDDOWNLOAD\\epub3\\epub3.epub"));
-        System.out.println(book.getTitle());
-        System.out.println(book.getMetadata().getIdentifiers());
-        System.out.println(book.getMetadata().getAuthors());
-        System.out.println(book.getMetadata().getDates());
-        System.out.println(book.getMetadata().getOtherProperties().get("dcterms:modified"));
-        System.out.println(book.getMetadata().getPublishers());
-        System.out.println(book.getCoverImage());
-        System.out.println(book.getOpfResource().getHref());
-        System.out.println(book.getMetadata().getLanguage());
-        System.out.println(book.getMetadata().getOtherProperties());
-        System.out.println(book.getNcxResource());
-        System.out.println(book.getVersion());
+//        Book book = new EpubReader().readEpub(new FileInputStream("F:\\TDDOWNLOAD\\epub3\\cc-shared-culture-20120130.epub"));
+        Book book = new EpubReader().readEpub(new FileInputStream("F:\\TDDOWNLOAD\\epub2.epub"));
+        new EpubWriter().writeEpub3(book, new FileOutputStream("F:\\TDDOWNLOAD\\epub3\\out.epub"));
 
     }
 }

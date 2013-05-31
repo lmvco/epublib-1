@@ -1,10 +1,9 @@
 package nl.siegmann.epublib.domain;
 
-import java.io.Serializable;
+import nl.siegmann.epublib.util.StringUtil;
+
 import java.util.List;
 import java.util.UUID;
-
-import nl.siegmann.epublib.util.StringUtil;
 
 /**
  * A Book's identifier.
@@ -14,7 +13,7 @@ import nl.siegmann.epublib.util.StringUtil;
  * @author paul
  *
  */
-public class Identifier implements Serializable {
+public class Identifier extends DcmesElement {
 	
 	/**
 	 * 

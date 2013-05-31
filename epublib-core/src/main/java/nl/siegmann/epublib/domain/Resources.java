@@ -1,16 +1,11 @@
 package nl.siegmann.epublib.domain;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import nl.siegmann.epublib.Constants;
 import nl.siegmann.epublib.service.MediatypeService;
 import nl.siegmann.epublib.util.StringUtil;
+
+import java.io.Serializable;
+import java.util.*;
 
 /**
  * All the resources that make up the book.
@@ -84,7 +79,7 @@ public class Resources implements Serializable {
 	
 	private String getResourceItemPrefix(Resource resource) {
 		String result;
-		if (MediatypeService.isBitmapImage(resource.getMediaType())) {
+		if (MediatypeService.isBitmapImage(resource.getMediaTypeProperty())) {
 			result = IMAGE_PREFIX;
 		} else {
 			result = ITEM_PREFIX;
@@ -168,23 +163,23 @@ public class Resources implements Serializable {
 			return;
 		}
 		if(StringUtil.isBlank(resource.getHref())) {
-			if(resource.getMediaType() == null) {
-				throw new IllegalArgumentException("Resource must have either a MediaType or a href");
+			if(resource.getMediaTypeProperty() == null) {
+				throw new IllegalArgumentException("Resource must have either a MediaTypeProperties or a href");
 			}
 			int i = 1;
-			String href = createHref(resource.getMediaType(), i);
+			String href = createHref(resource.getMediaTypeProperty(), i);
 			while(resources.containsKey(href)) {
-				href = createHref(resource.getMediaType(), (++i));
+				href = createHref(resource.getMediaTypeProperty(), (++i));
 			}
 			resource.setHref(href);
 		}
 	}
 	
-	private String createHref(MediaType mediaType, int counter) {
-		if(MediatypeService.isBitmapImage(mediaType)) {
-			return "image_" + counter + mediaType.getDefaultExtension();
+	private String createHref(MediaTypeProperty mediaTypeProperty, int counter) {
+		if(MediatypeService.isBitmapImage(mediaTypeProperty)) {
+			return "image_" + counter + mediaTypeProperty.getDefaultExtension();
 		} else {
-			return "item_" + counter + mediaType.getDefaultExtension();
+			return "item_" + counter + mediaTypeProperty.getDefaultExtension();
 		}
 	}
 	
@@ -297,11 +292,11 @@ public class Resources implements Serializable {
 	 * 
 	 * Useful for looking up the table of contents as it's supposed to be the only resource with NCX mediatype.
 	 * 
-	 * @param mediaType
+	 * @param mediaTypeProperty
 	 * @return
 	 */
-	public Resource findFirstResourceByMediaType(MediaType mediaType) {
-		return findFirstResourceByMediaType(resources.values(), mediaType);
+	public Resource findFirstResourceByMediaType(MediaTypeProperty mediaTypeProperty) {
+		return findFirstResourceByMediaType(resources.values(), mediaTypeProperty);
 	}
 	
 	/**
@@ -309,12 +304,12 @@ public class Resources implements Serializable {
 	 * 
 	 * Useful for looking up the table of contents as it's supposed to be the only resource with NCX mediatype.
 	 * 
-	 * @param mediaType
+	 * @param mediaTypeProperty
 	 * @return
 	 */
-	public static Resource findFirstResourceByMediaType(Collection<Resource> resources, MediaType mediaType) {
+	public static Resource findFirstResourceByMediaType(Collection<Resource> resources, MediaTypeProperty mediaTypeProperty) {
 		for (Resource resource: resources) {
-			if (resource.getMediaType() == mediaType) {
+			if (resource.getMediaTypeProperty() == mediaTypeProperty) {
 				return resource;
 			}
 		}
@@ -324,16 +319,16 @@ public class Resources implements Serializable {
 	/**
 	 * All resources that have the given MediaType.
 	 * 
-	 * @param mediaType
+	 * @param mediaTypeProperty
 	 * @return
 	 */
-	public List<Resource> getResourcesByMediaType(MediaType mediaType) {
+	public List<Resource> getResourcesByMediaType(MediaTypeProperty mediaTypeProperty) {
 		List<Resource> result = new ArrayList<Resource>();
-		if (mediaType == null) {
+		if (mediaTypeProperty == null) {
 			return result;
 		}
 		for (Resource resource: getAll()) {
-			if (resource.getMediaType() == mediaType) {
+			if (resource.getMediaTypeProperty() == mediaTypeProperty) {
 				result.add(resource);
 			}
 		}
@@ -343,20 +338,20 @@ public class Resources implements Serializable {
 	/**
 	 * All Resources that match any of the given list of MediaTypes
 	 * 
-	 * @param mediaTypes
+	 * @param mediaTypePropertieses
 	 * @return
 	 */
-	public List<Resource> getResourcesByMediaTypes(MediaType[] mediaTypes) {
+	public List<Resource> getResourcesByMediaTypes(MediaTypeProperty[] mediaTypePropertieses) {
 		List<Resource> result = new ArrayList<Resource>();
-		if (mediaTypes == null) {
+		if (mediaTypePropertieses == null) {
 			return result;
 		}
 		
 		// this is the fastest way of doing this according to 
 		// http://stackoverflow.com/questions/1128723/in-java-how-can-i-test-if-an-array-contains-a-certain-value
-		List<MediaType> mediaTypesList = Arrays.asList(mediaTypes);
+		List<MediaTypeProperty> mediaTypesListProperties = Arrays.asList(mediaTypePropertieses);
 		for (Resource resource: getAll()) {
-			if (mediaTypesList.contains(resource.getMediaType())) {
+			if (mediaTypesListProperties.contains(resource.getMediaTypeProperty())) {
 				result.add(resource);
 			}
 		}

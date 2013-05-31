@@ -1,10 +1,10 @@
 package nl.siegmann.epublib.service;
 
+import nl.siegmann.epublib.domain.MediaTypeProperty;
+import nl.siegmann.epublib.util.StringUtil;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import nl.siegmann.epublib.domain.MediaType;
-import nl.siegmann.epublib.util.StringUtil;
 
 
 /**
@@ -15,47 +15,47 @@ import nl.siegmann.epublib.util.StringUtil;
  */
 public class MediatypeService {
 
-	public static final MediaType XHTML = new MediaType("application/xhtml+xml", ".xhtml", new String[] {".htm", ".html", ".xhtml"});
-	public static final MediaType EPUB = new MediaType("application/epub+zip", ".epub");
-	public static final MediaType NCX = new MediaType("application/x-dtbncx+xml", ".ncx");
+	public static final MediaTypeProperty XHTML = new MediaTypeProperty("application/xhtml+xml", ".xhtml", new String[] {".htm", ".html", ".xhtml"});
+	public static final MediaTypeProperty EPUB = new MediaTypeProperty("application/epub+zip", ".epub");
+	public static final MediaTypeProperty NCX = new MediaTypeProperty("application/x-dtbncx+xml", ".ncx");
 	
-	public static final MediaType JAVASCRIPT = new MediaType("text/javascript", ".js");
-	public static final MediaType CSS = new MediaType("text/css", ".css");
+	public static final MediaTypeProperty JAVASCRIPT = new MediaTypeProperty("text/javascript", ".js");
+	public static final MediaTypeProperty CSS = new MediaTypeProperty("text/css", ".css");
 
 	// images
-	public static final MediaType JPG = new MediaType("image/jpeg", ".jpg", new String[] {".jpg", ".jpeg"});
-	public static final MediaType PNG = new MediaType("image/png", ".png");
-	public static final MediaType GIF = new MediaType("image/gif", ".gif");
+	public static final MediaTypeProperty JPG = new MediaTypeProperty("image/jpeg", ".jpg", new String[] {".jpg", ".jpeg"});
+	public static final MediaTypeProperty PNG = new MediaTypeProperty("image/png", ".png");
+	public static final MediaTypeProperty GIF = new MediaTypeProperty("image/gif", ".gif");
 	
-	public static final MediaType SVG = new MediaType("image/svg+xml", ".svg");
+	public static final MediaTypeProperty SVG = new MediaTypeProperty("image/svg+xml", ".svg");
 
 	// fonts
-	public static final MediaType TTF = new MediaType("application/x-truetype-font", ".ttf");
-	public static final MediaType OPENTYPE = new MediaType("application/vnd.ms-opentype", ".otf");
-	public static final MediaType WOFF = new MediaType("application/font-woff", ".woff");
+	public static final MediaTypeProperty TTF = new MediaTypeProperty("application/x-truetype-font", ".ttf");
+	public static final MediaTypeProperty OPENTYPE = new MediaTypeProperty("application/vnd.ms-opentype", ".otf");
+	public static final MediaTypeProperty WOFF = new MediaTypeProperty("application/font-woff", ".woff");
 	
 	// audio
-	public static final MediaType MP3 = new MediaType("audio/mpeg", ".mp3");
-	public static final MediaType MP4 = new MediaType("audio/mp4", ".mp4");
-	public static final MediaType OGG = new MediaType("audio/ogg", ".ogg");	
+	public static final MediaTypeProperty MP3 = new MediaTypeProperty("audio/mpeg", ".mp3");
+	public static final MediaTypeProperty MP4 = new MediaTypeProperty("audio/mp4", ".mp4");
+	public static final MediaTypeProperty OGG = new MediaTypeProperty("audio/ogg", ".ogg");
 
-	public static final MediaType SMIL = new MediaType("application/smil+xml", ".smil");
-	public static final MediaType XPGT = new MediaType("application/adobe-page-template+xml", ".xpgt");
-	public static final MediaType PLS = new MediaType("application/pls+xml", ".pls");
+	public static final MediaTypeProperty SMIL = new MediaTypeProperty("application/smil+xml", ".smil");
+	public static final MediaTypeProperty XPGT = new MediaTypeProperty("application/adobe-page-template+xml", ".xpgt");
+	public static final MediaTypeProperty PLS = new MediaTypeProperty("application/pls+xml", ".pls");
 	
-	public static MediaType[] mediatypes = new MediaType[] {
+	public static MediaTypeProperty[] mediatypes = new MediaTypeProperty[] {
 		XHTML, EPUB, JPG, PNG, GIF, CSS, SVG, TTF, NCX, XPGT, OPENTYPE, WOFF, SMIL, PLS, JAVASCRIPT, MP3, MP4, OGG
 	};
 	
-	public static Map<String, MediaType> mediaTypesByName = new HashMap<String, MediaType>();
+	public static Map<String, MediaTypeProperty> mediaTypesByName = new HashMap<String, MediaTypeProperty>();
 	static {
 		for(int i = 0; i < mediatypes.length; i++) {
 			mediaTypesByName.put(mediatypes[i].getName(), mediatypes[i]);
 		}
 	}
 	
-	public static boolean isBitmapImage(MediaType mediaType) {
-		return mediaType == JPG || mediaType == PNG || mediaType == GIF;
+	public static boolean isBitmapImage(MediaTypeProperty mediaTypeProperty) {
+		return mediaTypeProperty == JPG || mediaTypeProperty == PNG || mediaTypeProperty == GIF;
 	}
 	
 	/**
@@ -65,9 +65,9 @@ public class MediatypeService {
 	 * @param filename
 	 * @return
 	 */
-	public static MediaType determineMediaType(String filename) {
+	public static MediaTypeProperty determineMediaType(String filename) {
 		for(int i = 0; i < mediatypes.length; i++) {
-			MediaType mediatype = mediatypes[i];
+			MediaTypeProperty mediatype = mediatypes[i];
 			for(String extension: mediatype.getExtensions()) {
 				if(StringUtil.endsWithIgnoreCase(filename, extension)) {
 					return mediatype;
@@ -77,7 +77,20 @@ public class MediatypeService {
 		return null;
 	}
 
-	public static MediaType getMediaTypeByName(String mediaTypeName) {
+	public static MediaTypeProperty getMediaTypeByName(String mediaTypeName) {
 		return mediaTypesByName.get(mediaTypeName);
 	}
+
+    public static MediaTypeProperty getMediaType(String href, String mediaTypeName) {
+        MediaTypeProperty mediaTypeProperty = getMediaTypeByName(mediaTypeName);
+        if (mediaTypeProperty != null)
+            return mediaTypeProperty;
+        String extention = StringUtil.substringAfterLast(href, '.');
+        mediaTypeProperty = new MediaTypeProperty(mediaTypeName, extention);
+        return mediaTypeProperty;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(JPG.getDefaultExtension());
+    }
 }

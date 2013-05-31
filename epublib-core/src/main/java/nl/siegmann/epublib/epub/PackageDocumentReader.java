@@ -34,7 +34,7 @@ public class PackageDocumentReader extends PackageDocumentBase {
 		Document packageDocument = ResourceUtil.getAsDocument(packageResource);
 		String packageHref = packageResource.getHref();
 		resources = fixHrefs(packageHref, resources);
-        readVersion(packageDocument, book);
+        readPackageProperties(packageDocument, book);
         readGuide(packageDocument, epubReader, book, resources);
 		
 		// Books sometimes use non-identifier ids. We map these here to legal ones
@@ -45,17 +45,38 @@ public class PackageDocumentReader extends PackageDocumentBase {
 		book.setMetadata(PackageDocumentMetadataReader.readMetadata(packageDocument, book.getResources()));
 		book.setSpine(readSpine(packageDocument, epubReader, book.getResources(), idMapping));
         book.setNavResource(readNav(book.getManifest()));
-		
-		// if we did not find a cover page then we make the first page of the book the cover page
+        book.setBindings(readBindings(packageDocument));
+        book.setPackageId(readPackageId(book.getMetadata()));
+
+        // if we did not find a cover page then we make the first page of the book the cover page
 		if (book.getCoverPage() == null && book.getSpine().size() > 0) {
 			book.setCoverPage(book.getSpine().getResource(0));
 		}
 	}
 
-    private static void readVersion(Document packageDocument, Book book) {
+    private static String readPackageId(Metadata metadata) {
+        String result = Identifier.getBookIdIdentifier(metadata.getIdentifiers()).getValue();
+        for (Meta meta : metadata.getMetas()) {
+            if (meta.getProperty().equals(DCAttributes.modified)) {
+                if (StringUtil.isNotBlank(meta.getValue())) {
+                    return String.format("%s@%s", result, meta.getValue());
+                }
+            }
+        }
+
+        return result;
+    }
+
+    private static void readPackageProperties(Document packageDocument, Book book) {
         String version = packageDocument.getDocumentElement().getAttribute(OPFAttributes.version);
-        if (StringUtil.isNotBlank(version))
+        String uniqueId = packageDocument.getDocumentElement().getAttribute(OPFAttributes.uniqueIdentifier);
+        if (StringUtil.isNotBlank(version)) {
             book.setVersion(Version.findVersion(version));
+        }
+        if (StringUtil.isBlank(uniqueId)) {
+            uniqueId = BOOK_ID_ID;
+        }
+        book.setUniqueId(uniqueId);
     }
 
 //	private static Resource readCoverImage(Element metadataElement, Resources resources) {
@@ -83,6 +104,8 @@ public class PackageDocumentReader extends PackageDocumentBase {
             String id = DOMUtil.getAttribute(itemElement, NAMESPACE_OPF, OPFAttributes.id);
             String href = DOMUtil.getAttribute(itemElement, NAMESPACE_OPF, OPFAttributes.href);
             String properties = DOMUtil.getAttribute(itemElement, NAMESPACE_OPF, OPFAttributes.properties);
+            String fallback = DOMUtil.getAttribute(itemElement, NAMESPACE_OPF, OPFAttributes.fallback);
+            String mediaOverlay = DOMUtil.getAttribute(itemElement, NAMESPACE_OPF, OPFAttributes.mediaOverlay);
             try {
                 href = URLDecoder.decode(href, Constants.CHARACTER_ENCODING);
             } catch (UnsupportedEncodingException e) {
@@ -95,11 +118,14 @@ public class PackageDocumentReader extends PackageDocumentBase {
                 continue;
             }
             resource.setId(id);
-            MediaType mediaType = MediatypeService.getMediaTypeByName(mediaTypeName);
-            if(mediaType != null) {
-                resource.setMediaType(mediaType);
+            MediaTypeProperty mediaTypeProperty = MediatypeService.getMediaType(href, mediaTypeName);
+            if(mediaTypeProperty != null) {
+                resource.setMediaTypeProperty(mediaTypeProperty);
             }
-            manifest.addReference(new ManifestItemReference(resource, ManifestItemProperties.findProperties(properties)));
+            ManifestItemReference manifestItem = new ManifestItemReference(resource, ManifestItemProperties.findProperties(properties));
+            manifestItem.setFallback(fallback);
+            manifestItem.setMediaOverlay(mediaOverlay);
+            manifest.addReference(manifestItem);
             idMapping.put(id, resource.getId());
         }
     }
@@ -141,9 +167,9 @@ public class PackageDocumentReader extends PackageDocumentBase {
 				continue;
 			}
 			resource.setId(id);
-			MediaType mediaType = MediatypeService.getMediaTypeByName(mediaTypeName);
-			if(mediaType != null) {
-				resource.setMediaType(mediaType);
+			MediaTypeProperty mediaTypeProperty = MediatypeService.getMediaTypeByName(mediaTypeName);
+			if(mediaTypeProperty != null) {
+				resource.setMediaTypeProperty(mediaTypeProperty);
 			}
 			result.add(resource);
 			idMapping.put(id, resource.getId());
@@ -241,6 +267,8 @@ public class PackageDocumentReader extends PackageDocumentBase {
 			return generateSpineFromResources(resources);
 		}
 		Spine result = new Spine();
+        result.setId(spineElement.getAttribute(OPFAttributes.id));
+        result.setDirection(PageProgressionDirection.findDirection(spineElement.getAttribute(OPFAttributes.pageProgressionDirection)));
 		result.setTocResource(findTableOfContentsResource(spineElement, resources));
 		NodeList spineNodes = packageDocument.getElementsByTagNameNS(NAMESPACE_OPF, OPFTags.itemref);
 		List<SpineReference> spineReferences = new ArrayList<SpineReference>(spineNodes.getLength());
@@ -262,6 +290,9 @@ public class PackageDocumentReader extends PackageDocumentBase {
 			}
 			
 			SpineReference spineReference = new SpineReference(resource);
+            spineReference.setIdref(itemref);
+            String properties = DOMUtil.getAttribute(spineItem, NAMESPACE_OPF, OPFAttributes.properties);
+            spineReference.setProperties(SpineItemRefProperties.findProperties(properties));
 			if (OPFValues.no.equalsIgnoreCase(DOMUtil.getAttribute(spineItem, NAMESPACE_OPF, OPFAttributes.linear))) {
 				spineReference.setLinear(false);
 			}
@@ -280,6 +311,25 @@ public class PackageDocumentReader extends PackageDocumentBase {
         return null;
     }
 
+    public static Bindings readBindings(Document packageDocument) {
+        Bindings result = new Bindings();
+        Element bindingsElement = DOMUtil.getFirstElementByTagNameNS(packageDocument.getDocumentElement(), NAMESPACE_OPF, OPFTags.bindings);
+        if (bindingsElement != null) {
+            NodeList nodeList = bindingsElement.getElementsByTagNameNS(NAMESPACE_OPF, OPFTags.mediaType);
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                MediaType mediaType = new MediaType();
+                result.addMediaType(mediaType);
+                Element element = (Element) nodeList.item(i);
+                String mediaTypeName = DOMUtil.getAttribute(element, NAMESPACE_OPF, OPFAttributes.media_type);
+                String handler = DOMUtil.getAttribute(element, NAMESPACE_OPF, OPFAttributes.handler);
+                mediaType.setMediaTypeProperty(MediatypeService.getMediaTypeByName(mediaTypeName));
+                mediaType.setHandler(handler);
+            }
+        }
+
+        return result;
+    }
+
 	/**
 	 * Creates a spine out of all resources in the resources.
 	 * The generated spine consists of all XHTML pages in order of their href.
@@ -294,9 +344,9 @@ public class PackageDocumentReader extends PackageDocumentBase {
 		Collections.sort(resourceHrefs, String.CASE_INSENSITIVE_ORDER);
 		for (String resourceHref: resourceHrefs) {
 			Resource resource = resources.getByHref(resourceHref);
-			if (resource.getMediaType() == MediatypeService.NCX) {
+			if (resource.getMediaTypeProperty() == MediatypeService.NCX) {
 				result.setTocResource(resource);
-			} else if (resource.getMediaType() == MediatypeService.XHTML) {
+			} else if (resource.getMediaTypeProperty() == MediatypeService.XHTML) {
 				result.addSpineReference(new SpineReference(resource));
 			}
 		}
@@ -321,7 +371,7 @@ public class PackageDocumentReader extends PackageDocumentBase {
 			tocResource = resources.getByIdOrHref(tocResourceId);
 		}
 		
-		if (tocResource != null) {
+		/*if (tocResource != null) {
 			return tocResource;
 		}
 		
@@ -341,7 +391,7 @@ public class PackageDocumentReader extends PackageDocumentBase {
 
 		if (tocResource == null) {
 			log.error("Could not find table of contents resource. Tried resource with id '" + tocResourceId + "', " + Constants.DEFAULT_TOC_ID + ", " + Constants.DEFAULT_TOC_ID.toUpperCase() + " and any NCX resource.");
-		}
+		}*/
 		return tocResource;
 	}
 
@@ -405,9 +455,9 @@ public class PackageDocumentReader extends PackageDocumentBase {
 				log.error("Cover resource " + coverHref + " not found");
 				continue;
 			}
-			if (resource.getMediaType() == MediatypeService.XHTML) {
+			if (resource.getMediaTypeProperty() == MediatypeService.XHTML) {
 				book.setCoverPage(resource);
-			} else if (MediatypeService.isBitmapImage(resource.getMediaType())) {
+			} else if (MediatypeService.isBitmapImage(resource.getMediaTypeProperty())) {
 				book.setCoverImage(resource);
 			}
 		}

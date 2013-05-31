@@ -1,19 +1,10 @@
 package nl.siegmann.epublib.epub;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
 import junit.framework.TestCase;
-import nl.siegmann.epublib.domain.Author;
-import nl.siegmann.epublib.domain.Book;
-import nl.siegmann.epublib.domain.GuideReference;
-import nl.siegmann.epublib.domain.Identifier;
-import nl.siegmann.epublib.domain.Resource;
-import nl.siegmann.epublib.domain.TOCReference;
+import nl.siegmann.epublib.domain.*;
 import nl.siegmann.epublib.util.CollectionUtil;
+
+import java.io.*;
 
 public class EpubWriterTest extends TestCase {
 
@@ -58,7 +49,7 @@ public class EpubWriterTest extends TestCase {
 	public void testWritingBookWithCoverWithNullId() {
 		try {
 			Book book = new Book();
-		    book.getMetadata().addTitle("Epub test book 1");
+//		    book.getMetadata().addTitle("Epub test book 1");
 		    book.getMetadata().addAuthor(new Author("Joe", "Tester"));
 		    InputStream is = this.getClass().getResourceAsStream("/book1/cover.png");
 		    book.setCoverImage(new Resource(is, "cover.png"));
@@ -76,8 +67,8 @@ public class EpubWriterTest extends TestCase {
 	private Book createTestBook() throws IOException {
 		Book book = new Book();
 		
-		book.getMetadata().addTitle("Epublib test book 1");
-		book.getMetadata().addTitle("test2");
+//		book.getMetadata().addTitle("Epublib test book 1");
+//		book.getMetadata().addTitle("test2");
 		
 		book.getMetadata().addIdentifier(new Identifier(Identifier.Scheme.ISBN, "987654321"));
 		book.getMetadata().addAuthor(new Author("Joe", "Tester"));
