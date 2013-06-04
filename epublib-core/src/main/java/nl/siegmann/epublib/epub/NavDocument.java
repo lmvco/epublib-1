@@ -12,10 +12,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 import org.xmlpull.v1.XmlSerializer;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -91,6 +91,8 @@ public class NavDocument {
     public static List<TOCReference> read(Resource navResource, Book book) {
         try {
             Document navDocument = ResourceUtil.getAsDocument(navResource);
+            if (navDocument == null)
+                return Collections.emptyList();
             NodeList navList = navDocument.getDocumentElement().getElementsByTagName(NAVTags.nav);
             for (int i = 0; i < navList.getLength(); i++) {
                 Element navElement = (Element) navList.item(i);
@@ -211,11 +213,5 @@ public class NavDocument {
                 serializer.endTag(NAMESPACE_HTML, NAVTags.li);
             }
         }
-    }
-
-    public static void main(String[] args) throws IOException, SAXException {
-        Book book = new EpubReader().readEpub(new FileInputStream("F:\\TDDOWNLOAD\\epub3\\cc-shared-culture-20120130.epub"));
-        new EpubWriter().write(book, new FileOutputStream("F:\\TDDOWNLOAD\\epub3\\out.epub"));
-
     }
 }

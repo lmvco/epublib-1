@@ -201,7 +201,11 @@ public class NCXDocument {
 		serializer.startTag(NAMESPACE_NCX, NCXTags.docTitle);
 		serializer.startTag(NAMESPACE_NCX, NCXTags.text);
 		// write the first title
-		serializer.text(StringUtil.defaultIfNull(title.getValue()));
+        String titleValue = null;
+        if (title != null) {
+            titleValue = title.getValue();
+        }
+        serializer.text(StringUtil.defaultIfNull(titleValue));
 		serializer.endTag(NAMESPACE_NCX, NCXTags.text);
 		serializer.endTag(NAMESPACE_NCX, NCXTags.docTitle);
 		

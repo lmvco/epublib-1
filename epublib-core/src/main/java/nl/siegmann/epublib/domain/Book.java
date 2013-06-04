@@ -310,8 +310,9 @@ public class Book implements Serializable {
     private Resource navResource;
 	private Resource coverImage;
     // Package Identifier, changes when epub modified, contains Unique Identifier and last modified
-    private String uniqueId;
+    private String uniqueId = "";
     private String packageId;
+    private String zipPath;
 	
 	/**
 	 * Adds the resource to the table of contents of the book as a child section of the given parentSection
@@ -327,6 +328,7 @@ public class Book implements Serializable {
 		if (spine.findFirstResourceById(resource.getId()) < 0)  {
 			spine.addSpineReference(new SpineReference(resource));
 		}
+        addManifestItem(resource, null);
 		return parentSection.addChildSection(new TOCReference(sectionTitle, resource));
 	}
 
@@ -352,7 +354,8 @@ public class Book implements Serializable {
 		if (spine.findFirstResourceById(resource.getId()) < 0)  {
 			spine.addSpineReference(new SpineReference(resource));
 		}
-		return tocReference;
+        addManifestItem(resource, null);
+        return tocReference;
 	}
 	
 	
@@ -382,7 +385,9 @@ public class Book implements Serializable {
 
 
 	public Resource addResource(Resource resource) {
-		return resources.add(resource);
+        Resource result = resources.add(resource);
+        addManifestItem(result, null);
+        return result;
 	}
 	
 	/**
@@ -446,6 +451,7 @@ public class Book implements Serializable {
 		if (! resources.containsByHref(coverPage.getHref())) {
 			resources.add(coverPage);
 		}
+        addManifestItem(coverPage, null);
 		guide.setCoverPage(coverPage);
 	}
 	
@@ -475,6 +481,7 @@ public class Book implements Serializable {
 		if (! resources.containsByHref(coverImage.getHref())) {
 			resources.add(coverImage);
 		}
+        addManifestItem(coverImage, ManifestItemProperties.COVER_IMAGE);
 		this.coverImage = coverImage;
 	}
 	
@@ -486,6 +493,12 @@ public class Book implements Serializable {
 	public Guide getGuide() {
 		return guide;
 	}
+
+    public void addManifestItem(Resource resource, ManifestItemProperties properties) {
+        if (manifest.getManifestItemByHref(resource.getHref()) == null) {
+            manifest.addReference(new ManifestItemReference(resource, properties));
+        }
+    }
 
 	/**
 	 * All Resources of the Book that can be reached via the Spine, the TableOfContents or the Guide.
@@ -580,6 +593,14 @@ public class Book implements Serializable {
 
     public void setPackageId(String packageId) {
         this.packageId = packageId;
+    }
+
+    public String getZipPath() {
+        return zipPath;
+    }
+
+    public void setZipPath(String zipPath) {
+        this.zipPath = zipPath;
     }
 }
 

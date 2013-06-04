@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,8 +36,6 @@ public class Resource implements Serializable {
 		
 	private String fileName;
 	private long cachedSize;
-	
-	private static final Logger LOG = LoggerFactory.getLogger(Resource.class);
 	
 	/**
 	 * Creates an empty Resource with the given href.
@@ -200,22 +199,10 @@ public class Resource implements Serializable {
 	public byte[] getData() throws IOException {
 		
 		if ( data == null ) {
-			
-			LOG.info("Initializing lazy resource " + fileName + "#" + this.href );
-			
-			ZipInputStream in = new ZipInputStream(new FileInputStream(this.fileName));
-			
-			for(ZipEntry zipEntry = in.getNextEntry(); zipEntry != null; zipEntry = in.getNextEntry()) {
-				if(zipEntry.isDirectory()) {
-					continue;
-				}
-				
-				if ( zipEntry.getName().endsWith(this.href)) {
-					this.data = IOUtil.toByteArray(in, (int) this.cachedSize);
-				}				
-			}
-			
-			in.close();
+            FileInputStream inputStream = new FileInputStream(fileName);
+            byte[] data = IOUtil.toByteArray(inputStream);
+            inputStream.close();
+            return data;
 		}
 		
 		return data;

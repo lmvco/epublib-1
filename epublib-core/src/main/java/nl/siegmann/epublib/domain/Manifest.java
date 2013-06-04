@@ -28,12 +28,18 @@ public class Manifest implements Serializable {
 
     public ManifestItemReference addReference(ManifestItemReference reference) {
         references.put(reference.getResourceId(), reference);
-        resources.add(reference.getResource());
+        if (!resources.containsByHref(reference.getResource().getHref())) {
+            resources.add(reference.getResource());
+        }
         return reference;
     }
 
     public ManifestItemReference removeManifestItem(String href) {
         return references.remove(href);
+    }
+
+    public ManifestItemReference getManifestItemByHref(String href) {
+        return references.get(href);
     }
 
     public Resources getResources() {

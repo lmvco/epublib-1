@@ -41,7 +41,7 @@ public class Date extends DcmesElement {
 		public String toString() {
 			return value;
 		}
-	};
+	}
 
 	private Event event;
 	private String dateString;

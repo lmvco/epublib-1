@@ -5,10 +5,6 @@ import junit.framework.TestCase;
 import nl.siegmann.epublib.domain.Metadata;
 import nl.siegmann.epublib.domain.Resources;
 import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
-
-import java.io.FileInputStream;
-import java.io.IOException;
 
 public class PackageDocumentMetadataReaderTest extends TestCase {
 	
@@ -48,12 +44,7 @@ public class PackageDocumentMetadataReaderTest extends TestCase {
 
     public void testReadsLanguage() {
         Metadata metadata = getMetadata("/opf/test_language.opf");
-        assertEquals("fi", metadata.getLanguages());
-    }
-
-    public void testDefaultsToEnglish() {
-        Metadata metadata = getMetadata("/opf/test_default_language.opf");
-        assertEquals("en", metadata.getLanguages());
+        assertEquals("fi", metadata.getLanguages().get(0).getValue());
     }
 
     private Metadata getMetadata(String file) {
@@ -68,12 +59,5 @@ public class PackageDocumentMetadataReaderTest extends TestCase {
 
             return null;
         }
-    }
-
-    public static void main(String[] args) throws IOException, SAXException {
-        Document document = EpubProcessorSupport.createDocumentBuilder().parse(new FileInputStream("F:\\TDDOWNLOAD\\package.opf"));
-        Resources resources = new Resources();
-        Metadata metadata = PackageDocumentMetadataReader.readMetadata(document, resources);
-        System.out.println(metadata.getLinks());
     }
 }

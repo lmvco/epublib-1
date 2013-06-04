@@ -2,211 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ef1a10f-088e-4a40-8491-b8b40517e79d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Bindings.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/DcmesElement.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/impl/Epub2PackageDocumentMetadataWriter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/impl/Epub2PackageDocumentWriter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/impl/Epub3PackageDocumentMetadataWriter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/impl/Epub3PackageDocumentWriter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Link.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Meta.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/PageProgressionDirection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/epublib-core/src/test/resources/opf/test3.opf" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\epublib-tools.iml" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\groovy\nl\siegmann\epublib\docbook2epub.groovy" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\Fileset2Epub.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\bookprocessor\CoverpageBookProcessor.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\bookprocessor\DefaultBookProcessorPipeline.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\bookprocessor\FixIdentifierBookProcessor.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\bookprocessor\FixMissingResourceBookProcessor.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\bookprocessor\HtmlBookProcessor.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\bookprocessor\HtmlCleanerBookProcessor.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\bookprocessor\HtmlSplitterBookProcessor.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\bookprocessor\SectionHrefSanityCheckBookProcessor.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\bookprocessor\SectionTitleBookProcessor.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\bookprocessor\TextReplaceBookProcessor.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\bookprocessor\XslBookProcessor.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\bookprocessor\package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\chm\ChmParser.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\chm\HHCParser.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\chm\package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\fileset\FilesetBookCreator.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\html\htmlcleaner\XmlEventSerializer.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\html\htmlcleaner\XmlSerializer.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\search\ResourceSearchIndex.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\search\SearchIndex.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\search\SearchResult.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\search\SearchResults.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\util\DesktopUtil.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\util\ToolsResourceUtil.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\util\VFSUtil.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\utilities\HtmlSplitter.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\utilities\NumberSayer.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\AboutDialog.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\BrowseBar.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\ButtonBar.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\ContentPane.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\GuidePane.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\HTMLDocumentFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\ImageLoaderCache.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\MetadataPane.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\MyHtmlEditorKit.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\MyParserCallback.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\NavigationBar.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\SpineSlider.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\TableOfContentsPane.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\ValueHolder.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\Viewer.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\nl\siegmann\epublib\viewer\ViewerUtil.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\java\org\htmlcleaner\EpublibXmlSerializer.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\book\00_cover.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\book\index.txt" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\epublibviewer-help.epub" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\icons\chapter-first.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\icons\chapter-last.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\icons\chapter-next.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\icons\chapter-previous.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\icons\history-next.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\icons\history-previous.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\icons\layout-content.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\icons\layout-toc-content-meta.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\icons\layout-toc-content.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\icons\page-next.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\icons\page-previous.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\icons\search-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\icons\search-next.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\viewer\icons\search-previous.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\xsl\chm_remove_prev_next.xsl" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\xsl\chm_remove_prev_next_2.xsl" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\xsl\chm_remove_prev_next_3.xsl" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\main\resources\xsl\remove_comment_container.xsl" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\java\nl\siegmann\epublib\FilesetBookCreatorTest.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\java\nl\siegmann\epublib\bookprocessor\CoverpageBookProcessorTest.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\java\nl\siegmann\epublib\fileset\FilesetBookCreatorTest.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\java\nl\siegmann\epublib\hhc\ChmParserTest.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\java\nl\siegmann\epublib\html\htmlcleaner\FixIdentifierBookProcessorTest.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\java\nl\siegmann\epublib\html\htmlcleaner\HtmlCleanerBookProcessorTest.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\java\nl\siegmann\epublib\search\SearchIndexTest.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\java\nl\siegmann\epublib\utilities\HtmlSplitterTest.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\java\nl\siegmann\epublib\utilities\NumberSayerTest.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\java\nl\siegmann\epublib\utilities\ResourceUtilTest.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\book1\book1.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\book1\chapter1.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\book1\chapter2.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\book1\chapter2_1.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\book1\chapter3.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\book1\cover.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\book1\cover.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\book1\flowers_320x240.jpg" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\#IDXHDR" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\#IVB" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\#STRINGS" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\#SYSTEM" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\#TOPICS" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\#URLSTR" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\#URLTBL" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\#WINDOWS" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\$FIftiMain" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\$OBJINST" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\$WWAssociativeLinks\BTree" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\$WWAssociativeLinks\Data" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\$WWAssociativeLinks\Map" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\$WWAssociativeLinks\Property" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\$WWKeywordLinks\BTree" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\$WWKeywordLinks\Data" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\$WWKeywordLinks\Map" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\$WWKeywordLinks\Property" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\CHM-example.hhc" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\CHM-example.hhk" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\Context-sensitive_example\contextID-10000.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\Context-sensitive_example\contextID-10010.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\Context-sensitive_example\contextID-20000.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\Context-sensitive_example\contextID-20010.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\Garden\flowers.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\Garden\garden.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\Garden\tree.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\HTMLHelp_Examples\CloseWindowAutomatically.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\HTMLHelp_Examples\Jump_to_anchor.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\HTMLHelp_Examples\LinkPDFfromCHM.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\HTMLHelp_Examples\Simple_link_example.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\HTMLHelp_Examples\example-external-pdf.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\HTMLHelp_Examples\pop-up_example.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\HTMLHelp_Examples\shortcut_link.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\HTMLHelp_Examples\topic-02.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\HTMLHelp_Examples\topic-03.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\HTMLHelp_Examples\topic-04.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\HTMLHelp_Examples\topic_split_example.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\HTMLHelp_Examples\using_window_open.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\HTMLHelp_Examples\xp-style_radio-button_check-boxes.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\design.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\embedded_files\example-embedded.pdf" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\external_files\external_topic.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\filelist.txt" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\blume.jpg" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\ditzum.jpg" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\eiche.jpg" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\extlink.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\insekt.jpg" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\list_arrow.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\lupine.jpg" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\riffel_40px.jpg" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\riffel_helpinformation.jpg" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\riffel_home.jpg" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\rotor_enercon.jpg" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\screenshot_big.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\screenshot_small.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\up_rectangle.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\verlauf-blau.jpg" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\verlauf-gelb.jpg" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\verlauf-rot.jpg" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\welcome_small_big-en.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\images\wintertree.jpg" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\index.htm" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\chm1\topic.txt" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\holmes_scandal_bohemia.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\opf\test1.opf" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\opf\test2.opf" afterPath="" />
-      <change type="DELETED" beforePath="E:\data\epublib\epublib-tools\src\test\resources\toc.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Author.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Author.java" />
+      <change type="DELETED" beforePath="E:\data\epublib\README" afterPath="" />
+      <change type="DELETED" beforePath="E:\data\epublib\epublib-core\src\test\java\nl\siegmann\epublib\epub\Test.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Book.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Book.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Date.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Date.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/EpubReader.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/EpubReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/EpubReaderTest.java" afterPath="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/EpubReaderTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/EpubWriter.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/EpubWriter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/EpubWriterTest.java" afterPath="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/EpubWriterTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Identifier.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Identifier.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Manifest.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Manifest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/ManifestItemReference.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/ManifestItemReference.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/MediaType.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/MediaType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/service/MediatypeService.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/service/MediatypeService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Metadata.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Metadata.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/NCXDocument.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/NCXDocument.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/NCXDocumentTest.java" afterPath="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/NCXDocumentTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/NavDocument.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/NavDocument.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentBase.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentBase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentMetadataReader.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentMetadataReader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/PackageDocumentMetadataReaderTest.java" afterPath="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/PackageDocumentMetadataReaderTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentMetadataWriter.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentMetadataWriter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentReader.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentWriter.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentWriter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.markdown" afterPath="$PROJECT_DIR$/README.markdown" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Resource.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Resource.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/util/ResourceUtil.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/util/ResourceUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Resources.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Resources.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/domain/ResourcesTest.java" afterPath="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/domain/ResourcesTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/Simple1.java" afterPath="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/Simple1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Spine.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Spine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/SpineReference.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/SpineReference.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MOVED" beforePath="E:\data\epublib\epublib-core\src\main\java\nl\siegmann\epublib\domain\ManifestItemRefProperties.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/SpineItemRefProperties.java" />
-      <change type="MOVED" beforePath="E:\data\epublib\epublib-core\src\main\java\nl\siegmann\epublib\domain\MediaType.java" afterPath="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/MediaTypeProperty.java" />
     </list>
     <ignored path="epublib.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369984944217" ignored="false" />
-    <file path="/EpubReaderTest.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369886840843" ignored="false" />
-    <file path="/Resource.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1359432694740" ignored="false" />
-    <file path="/fragment.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369898352885" ignored="false" />
+    <file path="/Dummy.txt" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370326588284" ignored="false" />
+    <file path="/EpubReaderTest.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370324389255" ignored="false" />
+    <file path="/Resource.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370244230272" ignored="false" />
+    <file path="/fragment.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370326588284" ignored="false" />
     <file path="/EpubWriterTest.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1359450885693" ignored="false" />
     <file path="E:/trunk/rss/src/unfetch/com/netease/backend/collector/rss/unfetch/receive/epub/EpubFullContentTransfer.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1361514222692" ignored="false" />
     <file path="E:/trunk/rss/src/unfetch/com/netease/backend/collector/rss/unfetch/receive/service/PdfService.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1363680780710" ignored="false" />
@@ -227,7 +44,7 @@
     <file path="/EpubServiceTest.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1363685552236" ignored="false" />
     <file path="E:/trunk/rss/src/unfetch/com/netease/backend/collector/rss/unfetch/receive/epub/impl/EpubMarkerImpl.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1363685651080" ignored="false" />
     <file path="/EpubMarkerImpl.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1363685641598" ignored="false" />
-    <file path="/Test.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1365649988644" ignored="false" />
+    <file path="/Test.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370232187703" ignored="false" />
     <file path="E:/trunk/rss/test/common/com/netease/backend/collector/rss/common/dfs/Test.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1365586970184" ignored="false" />
     <file path="$PROJECT_DIR$/../pdfbox1.7/examples/src/main/java/org/apache/pdfbox/examples/pdmodel/PrintBookmarks.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1365477172788" ignored="false" />
     <file path="$PROJECT_DIR$/../pdfbox1.7/pdfbox/pom.xml" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1365477172788" ignored="false" />
@@ -346,19 +163,19 @@
     <file path="E:/trunk/rss/src/unfetch/com/netease/backend/collector/rss/unfetch/receive/epub/EpubHelper.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1365653083937" ignored="false" />
     <file path="/EpubHelper.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1365653080618" ignored="false" />
     <file path="/EpubFactory.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369280359532" ignored="false" />
-    <file path="/ResourceUtil.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369280341571" ignored="false" />
-    <file path="/PackageDocumentReader.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369882860889" ignored="false" />
+    <file path="/ResourceUtil.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370244421613" ignored="false" />
+    <file path="/PackageDocumentReader.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370317697664" ignored="false" />
     <file path="/PackageDocumentBase.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369900465416" ignored="false" />
-    <file path="/Book.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369882378154" ignored="false" />
-    <file path="/Manifest.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369981657531" ignored="false" />
+    <file path="/Book.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370313091802" ignored="false" />
+    <file path="/Manifest.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370319407976" ignored="false" />
     <file path="/ManifestReference.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369293902675" ignored="false" />
     <file path="/ManifestItemProperties.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369297525194" ignored="false" />
     <file path="/PackageDocumentReaderTest.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369295696354" ignored="false" />
     <file path="/Version.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369302246826" ignored="false" />
-    <file path="/NCXDocument.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369978778162" ignored="false" />
-    <file path="/NavDocument.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369984176960" ignored="false" />
+    <file path="/NCXDocument.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370310746197" ignored="false" />
+    <file path="/NavDocument.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370323963097" ignored="false" />
     <file path="/TableOfContents.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369365924810" ignored="false" />
-    <file path="/EpubReader.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369379409783" ignored="false" />
+    <file path="/EpubReader.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370326449239" ignored="false" />
     <file path="/MetadataBase.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369643915654" ignored="false" />
     <file path="/MetadataReader.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369708186376" ignored="false" />
     <file path="/MetadataWriter.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369643935531" ignored="false" />
@@ -370,7 +187,7 @@
     <file path="/Identifier.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369707551884" ignored="false" />
     <file path="/Metadata.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369895588106" ignored="false" />
     <file path="/Author.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369798422875" ignored="false" />
-    <file path="/PackageDocumentMetadataReaderTest.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369798517863" ignored="false" />
+    <file path="/PackageDocumentMetadataReaderTest.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370325195807" ignored="false" />
     <file path="/PackageDocumentMetadataWriter.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369818956549" ignored="false" />
     <file path="/Link.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369733256694" ignored="false" />
     <file path="/ManifestItemReference.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369980619043" ignored="false" />
@@ -382,16 +199,24 @@
     <file path="/MediaType.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369809885098" ignored="false" />
     <file path="/Bindings.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369809940720" ignored="false" />
     <file path="E:/IDEA/extend/epublib/epublib-core/src/main/java/nl/siegmann/epublib/epub/NCXDocument.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369814316127" ignored="false" />
-    <file path="E:/IDEA/extend/epublib/epublib-core/src/test/java/nl/siegmann/epublib/epub/EpubReaderTest.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369982963562" ignored="false" />
+    <file path="E:/IDEA/extend/epublib/epublib-core/src/test/java/nl/siegmann/epublib/epub/EpubReaderTest.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370319011716" ignored="false" />
     <file path="/PackageDocumentWriter.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369984387753" ignored="false" />
     <file path="/MediatypeService.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369966429998" ignored="false" />
-    <file path="/EpubWriter.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369984685286" ignored="false" />
+    <file path="/EpubWriter.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370326298839" ignored="false" />
     <file path="/Epub2PackageDocumentWriter.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369984410637" ignored="false" />
     <file path="/Epub2PackageDocumentMetadataWriter.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369983589428" ignored="false" />
-    <file path="/Epub3PackageDocumentMetadataWriter.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369898707102" ignored="false" />
+    <file path="/Epub3PackageDocumentMetadataWriter.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369988678833" ignored="false" />
     <file path="/Date.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369885134889" ignored="false" />
     <file path="/Epub3PackageDocumentWriter.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369900599595" ignored="false" />
     <file path="E:/IDEA/trunk/rss/src/unfetch/com/netease/backend/collector/rss/unfetch/receive/epub/task/ImageTask.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369966503167" ignored="false" />
+    <file path="/README.markdown" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1369986462138" ignored="false" />
+    <file path="E:/IDEA/trunk/fetcher-common/src/main/java/com/netease/backend/collector/common/pager/unified/UnifiedNews.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370231564878" ignored="false" />
+    <file path="E:/IDEA/trunk/rss/test/common/com/netease/backend/collector/rss/common/dfs/Test.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370232194797" ignored="false" />
+    <file path="F:/TDDOWNLOAD/aa.js" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370237784123" ignored="false" />
+    <file path="E:/IDEA/trunk/dcas-analyzer/src/test/java/com/netease/backend/analyzer/test/rss/RssParserTest.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370317931974" ignored="false" />
+    <file path="/RssParserTest.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370317930776" ignored="false" />
+    <file path="E:/IDEA/trunk/dcas-analyzer/src/main/java/com/netease/backend/collector/analyzer/parser/rss/DateParser.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370318603842" ignored="false" />
+    <file path="/NCXDocumentTest.java" changelist="0ef1a10f-088e-4a40-8491-b8b40517e79d" time="1370324892622" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -406,6 +231,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -442,8 +268,23 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.1/commons-io-2.1-sources.jar!/org/apache/commons/io/FileUtils.java" line="1398" class="org.apache.commons.io.FileUtils" package="org.apache.commons.io">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -453,19 +294,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NavDocument.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/NavDocument.java">
+      <file leaf-file-name="EpubReader.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/EpubReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="217" column="30" selection-start="9516" selection-end="9516" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DOMUtil.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/DOMUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="6" selection-start="247" selection-end="247" vertical-scroll-proportion="0.22197309">
+            <state line="158" column="22" selection-start="5449" selection-end="5449" vertical-scroll-proportion="0.33295965">
               <folding />
             </state>
           </provider>
@@ -489,22 +321,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/EpubReaderTest.java" />
-        <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentMetadataReader.java" />
+        <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Date.java" />
         <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/impl/Epub3PackageDocumentMetadataWriter.java" />
-        <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentBase.java" />
-        <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/service/MediatypeService.java" />
+        <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/util/ResourceUtil.java" />
         <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/NCXDocument.java" />
-        <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/ManifestItemReference.java" />
+        <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/impl/Epub2PackageDocumentWriter.java" />
+        <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Book.java" />
         <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentReader.java" />
         <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Manifest.java" />
-        <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/impl/Epub2PackageDocumentMetadataWriter.java" />
         <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/NavDocument.java" />
-        <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/impl/Epub2PackageDocumentWriter.java" />
-        <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/impl/Epub3PackageDocumentWriter.java" />
-        <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentWriter.java" />
+        <option value="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/PackageDocumentMetadataReaderTest.java" />
         <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/EpubWriter.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/EpubReaderTest.java" />
+        <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/EpubReader.java" />
+        <option value="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/EpubWriterTest.java" />
+        <option value="$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/NCXDocumentTest.java" />
+        <option value="$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Resource.java" />
       </list>
     </option>
   </component>
@@ -570,6 +402,11 @@
             <id>Properties Files</id>
           </State>
         </expanded-state>
+        <selected-state>
+          <State>
+            <id>Abstraction issues</id>
+          </State>
+        </selected-state>
       </profile-state>
     </entry>
   </component>
@@ -588,6 +425,16 @@
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
+  <component name="ProjectStructureProblems">
+    <ignored-problems>
+      <problem id="unused-library(library:project:Maven: commons-io:commons-io:2.0.1)" />
+      <problem id="unused-library(library:project:Maven: commons-lang:commons-lang:2.4)" />
+      <problem id="unused-library(library:project:Maven: commons-logging:commons-logging:1.0.4)" />
+      <problem id="unused-library(library:project:Maven: commons-vfs:commons-vfs:1.0)" />
+      <problem id="unused-library(library:project:Maven: junit:junit:3.8.1)" />
+      <problem id="unused-library(library:project:Maven: net.sourceforge.htmlcleaner:htmlcleaner:2.2)" />
+    </ignored-problems>
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
@@ -601,6 +448,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -650,26 +498,12 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="epublib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="epublib" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="epublib-core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -691,7 +525,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -702,6 +536,10 @@
               <option name="myItemId" value="epublib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -721,7 +559,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -737,10 +575,143 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="domain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="epublib-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -777,18 +748,18 @@
       <recent name="E:\IDEA\extend\epublib\epublib-core\src\test\resources\book1\css" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.NavDocument">
-    <configuration default="false" name="EpubReaderTest" type="Application" factoryName="Application" temporary="true">
+  <component name="RunManager" selected="JUnit.NCXDocumentTest">
+    <configuration default="false" name="Simple1" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
           <option name="PATTERN" value="nl.siegmann.epublib.epub.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="nl.siegmann.epublib.epub.EpubReaderTest" />
-      <option name="VM_PARAMETERS" value="-Dsun.zip.encoding=utf-8" />
+      <option name="MAIN_CLASS_NAME" value="nl.siegmann.epublib.epub.Simple1" />
+      <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
@@ -796,30 +767,24 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="epublib-core" />
       <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="PackageDocumentMetadataReaderTest.testEpub3" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="BookTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
-          <option name="PATTERN" value="nl.siegmann.epublib.epub.*" />
+          <option name="PATTERN" value="nl.siegmann.epublib.domain.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="epublib-core" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="nl.siegmann.epublib.epub" />
-      <option name="MAIN_CLASS_NAME" value="nl.siegmann.epublib.epub.PackageDocumentMetadataReaderTest" />
-      <option name="METHOD_NAME" value="testEpub3" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="nl.siegmann.epublib.domain" />
+      <option name="MAIN_CLASS_NAME" value="nl.siegmann.epublib.domain.BookTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -830,85 +795,91 @@
       </option>
       <envs />
       <patterns />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="PackageDocumentWriter" type="Application" factoryName="Application" temporary="true">
+    <configuration default="false" name="nl.siegmann.epublib.domain in epublib-core" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="nl.siegmann.epublib.domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="epublib-core" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="nl.siegmann.epublib.domain" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="EpubWriterTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
           <option name="PATTERN" value="nl.siegmann.epublib.epub.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="nl.siegmann.epublib.epub.PackageDocumentWriter" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <module name="epublib-core" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="PACKAGE_NAME" value="nl.siegmann.epublib.epub" />
+      <option name="MAIN_CLASS_NAME" value="nl.siegmann.epublib.epub.EpubWriterTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="epublib-core" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
       <envs />
+      <patterns />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="MediatypeService" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="nl.siegmann.epublib.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="nl.siegmann.epublib.service.MediatypeService" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="epublib-core" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="NavDocument" type="Application" factoryName="Application" temporary="true">
+    <configuration default="false" name="NCXDocumentTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
           <option name="PATTERN" value="nl.siegmann.epublib.epub.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="nl.siegmann.epublib.epub.NavDocument" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <module name="epublib-core" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="nl.siegmann.epublib.epub" />
+      <option name="MAIN_CLASS_NAME" value="nl.siegmann.epublib.epub.NCXDocumentTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="epublib-core" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
       <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
+      <patterns />
       <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -982,12 +953,12 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -999,14 +970,14 @@
       <extension name="coverage" enabled="false" merge="false" runner="idea" />
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -1017,19 +988,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.EpubReaderTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.PackageDocumentMetadataReaderTest.testEpub3" />
-      <item index="2" class="java.lang.String" itemvalue="Application.PackageDocumentWriter" />
-      <item index="3" class="java.lang.String" itemvalue="Application.MediatypeService" />
-      <item index="4" class="java.lang.String" itemvalue="Application.NavDocument" />
+      <item index="0" class="java.lang.String" itemvalue="Application.Simple1" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.BookTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.nl.siegmann.epublib.domain in epublib-core" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.EpubWriterTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.NCXDocumentTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.NavDocument" />
-        <item index="1" class="java.lang.String" itemvalue="Application.PackageDocumentWriter" />
-        <item index="2" class="java.lang.String" itemvalue="Application.MediatypeService" />
-        <item index="3" class="java.lang.String" itemvalue="Application.EpubReaderTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.PackageDocumentMetadataReaderTest.testEpub3" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.NCXDocumentTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.EpubWriterTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.nl.siegmann.epublib.domain in epublib-core" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.BookTest" />
+        <item index="4" class="java.lang.String" itemvalue="Application.Simple1" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -1091,8 +1062,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33386752" sideWeight="0.64613664" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24305555" sideWeight="0.67060083" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.277897" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24305555" sideWeight="0.7328326" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2671674" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1736" height="866" />
       <window_info id="DSM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="92" y="92" width="1496" height="826" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329859" sideWeight="0.6704036" order="10" side_tool="false" content_ui="tabs" />
@@ -1209,116 +1180,119 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/impl/Epub3PackageDocumentWriter.java">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/DOMUtilTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="168" column="13" selection-start="8085" selection-end="8085" vertical-scroll-proportion="3.20221">
+        <state line="14" column="0" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/test/resources/opf/test_default_language.opf">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="14" selection-start="843" selection-end="843" vertical-scroll-proportion="0.47734806">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0-sources.jar!/org/kxml2/io/KXmlSerializer.java">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/util/StringUtilTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="258" column="10" selection-start="7794" selection-end="7794" vertical-scroll-proportion="0.019889502">
+        <state line="6" column="13" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/impl/Epub2PackageDocumentMetadataWriter.java">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/Simple1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="50" selection-start="770" selection-end="770" vertical-scroll-proportion="0.020179372">
+        <state line="31" column="45" selection-start="1129" selection-end="1129" vertical-scroll-proportion="0.48287293">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentBase.java">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/PackageDocumentReaderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="31" selection-start="498" selection-end="498" vertical-scroll-proportion="0.019889502">
+        <state line="12" column="33" selection-start="347" selection-end="347" vertical-scroll-proportion="0.15911601">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/impl/Epub2PackageDocumentWriter.java">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/util/IOUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="37" selection-start="6079" selection-end="6079" vertical-scroll-proportion="1.4237669">
+        <state line="104" column="0" selection-start="2858" selection-end="2858" vertical-scroll-proportion="0.3237569">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/TOCReference.java">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/domain/BookTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="49" selection-start="319" selection-end="319" vertical-scroll-proportion="0.23867403">
+        <state line="6" column="0" selection-start="165" selection-end="165" vertical-scroll-proportion="0.09944751">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/EpubWriter.java">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/util/IOUtilTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="16" selection-start="1274" selection-end="1274" vertical-scroll-proportion="0.6961326">
+        <state line="10" column="13" selection-start="236" selection-end="236" vertical-scroll-proportion="0.07955801">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/TitledResourceReference.java">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/PackageDocumentMetadataReaderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="54" selection-start="204" selection-end="204" vertical-scroll-proportion="0.07955801">
+        <state line="61" column="5" selection-start="2970" selection-end="2970" vertical-scroll-proportion="0.83856505">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/ResourceReference.java">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/NCXDocumentTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="80" selection-end="80" vertical-scroll-proportion="0.07955801">
+        <state line="19" column="0" selection-start="419" selection-end="419" vertical-scroll-proportion="0.19889502">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/GuideReference.java">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/EpubWriterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="259" selection-end="259" vertical-scroll-proportion="0.25856355">
+        <state line="9" column="0" selection-start="220" selection-end="220" vertical-scroll-proportion="0.10089686">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/PackageDocumentWriter.java">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/test/java/nl/siegmann/epublib/epub/EpubReaderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="25" selection-start="539" selection-end="539" vertical-scroll-proportion="0.41767955">
+        <state line="41" column="49" selection-start="1391" selection-end="1391" vertical-scroll-proportion="0.3325967">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/HtmlProcessor.java">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/service/MediatypeService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="127" selection-end="127" vertical-scroll-proportion="0.07955801">
+        <state line="15" column="13" selection-start="275" selection-end="275" vertical-scroll-proportion="-0.73038673">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/Main.java">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/domain/Resource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="48" selection-end="48" vertical-scroll-proportion="0.039779004">
+        <state line="74" column="16" selection-start="2255" selection-end="2255" vertical-scroll-proportion="0.4320442">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/NavDocument.java">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/EpubWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="217" column="30" selection-start="9516" selection-end="9516" vertical-scroll-proportion="0.0">
+        <state line="133" column="4" selection-start="4108" selection-end="4108" vertical-scroll-proportion="2.3668509">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/DOMUtil.java">
+    <entry file="file://$PROJECT_DIR$/epublib-core/src/main/java/nl/siegmann/epublib/epub/EpubReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="6" selection-start="247" selection-end="247" vertical-scroll-proportion="0.22197309">
+        <state line="158" column="22" selection-start="5449" selection-end="5449" vertical-scroll-proportion="0.33295965">
           <folding />
         </state>
       </provider>
@@ -1375,11 +1349,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>epublib-tools</last-edited>
+          <last-edited>epublib-core</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

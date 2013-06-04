@@ -1,25 +1,21 @@
 package nl.siegmann.epublib.util;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.UnsupportedEncodingException;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.ParserConfigurationException;
-
 import nl.siegmann.epublib.Constants;
 import nl.siegmann.epublib.domain.MediaTypeProperty;
 import nl.siegmann.epublib.domain.Resource;
+import nl.siegmann.epublib.domain.Resources;
 import nl.siegmann.epublib.epub.EpubProcessorSupport;
 import nl.siegmann.epublib.service.MediatypeService;
-
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.*;
+import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 /**
  * Various resource utility methods
@@ -123,4 +119,19 @@ public class ResourceUtil {
 		Document result = documentBuilder.parse(inputSource);
 		return result;
 	}
+
+    /*public static Map<String, Resource> readResources(ZipInputStream in, String defaultHtmlEncoding) throws IOException {
+        Resources result = new Resources();
+        for(ZipEntry zipEntry = in.getNextEntry(); zipEntry != null; zipEntry = in.getNextEntry()) {
+            if(zipEntry.isDirectory()) {
+                continue;
+            }
+            Resource resource = ResourceUtil.createResource(zipEntry, in);
+            if(resource.getMediaTypeProperty() == MediatypeService.XHTML) {
+                resource.setInputEncoding(defaultHtmlEncoding);
+            }
+            result.add(resource);
+        }
+        return result;
+    }*/
 }

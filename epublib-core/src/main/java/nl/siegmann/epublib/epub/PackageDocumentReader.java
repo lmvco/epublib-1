@@ -41,8 +41,8 @@ public class PackageDocumentReader extends PackageDocumentBase {
 		Map<String, String> idMapping = new HashMap<String, String>();
 		
 		readManifest(packageDocument, resources, book, idMapping);
-		readCover(packageDocument, book);
-		book.setMetadata(PackageDocumentMetadataReader.readMetadata(packageDocument, book.getResources()));
+        readCover(packageDocument, book);
+        book.setMetadata(PackageDocumentMetadataReader.readMetadata(packageDocument, book.getResources()));
 		book.setSpine(readSpine(packageDocument, epubReader, book.getResources(), idMapping));
         book.setNavResource(readNav(book.getManifest()));
         book.setBindings(readBindings(packageDocument));

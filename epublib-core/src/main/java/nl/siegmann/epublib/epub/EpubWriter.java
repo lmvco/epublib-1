@@ -5,6 +5,8 @@ import nl.siegmann.epublib.epub.impl.Epub2PackageDocumentWriter;
 import nl.siegmann.epublib.epub.impl.Epub3PackageDocumentWriter;
 import nl.siegmann.epublib.service.MediatypeService;
 import nl.siegmann.epublib.util.IOUtil;
+import nl.siegmann.epublib.util.StringUtil;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xmlpull.v1.XmlSerializer;
@@ -40,26 +42,28 @@ public class EpubWriter {
 
 
 	public void write(Book book, OutputStream out) throws IOException {
-		book = processBook(book);
-		ZipOutputStream resultStream = new ZipOutputStream(out);
-		writeMimeType(resultStream);
-		writeContainer(resultStream);
-		initTOCResource(book);
-		writeResources(book, resultStream);
-		writePackageDocument(book, resultStream, Version.V2);
-		resultStream.close();
-	}
+		write(book, out, Version.V2);
+    }
 
     public void writeEpub3(Book book, OutputStream out) throws IOException{
+        write(book, out, Version.V3);
+    }
+
+    public void write(Book book, OutputStream out, Version version) throws IOException{
         book = processBook(book);
         ZipOutputStream resultStream = new ZipOutputStream(out);
         writeMimeType(resultStream);
         writeContainer(resultStream);
         initTOCResource(book);
-        initNavResource(book);
+        if (version == Version.V3) {
+            initNavResource(book);
+        }
         writeResources(book, resultStream);
-        writePackageDocument(book, resultStream, Version.V3);
+        writePackageDocument(book, resultStream, version);
         resultStream.close();
+        if (StringUtil.isNotBlank(book.getZipPath())) {
+            FileUtils.deleteQuietly(new File(book.getZipPath()));
+        }
     }
 
 	private Book processBook(Book book) {
