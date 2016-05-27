@@ -10,6 +10,7 @@ package nl.siegmann.epublib.epub;
 public abstract class PackageDocumentBase {
 	public static final String BOOK_ID_ID = "BookId";
 	public static final String NAMESPACE_OPF = "http://www.idpf.org/2007/opf";
+    public static final String NAMESPACE_OPS = "http://www.idpf.org/2007/ops";
 	public static final String NAMESPACE_DUBLIN_CORE = "http://purl.org/dc/elements/1.1/";
     public static final String EMPTY_NAMESPACE_PREFIX = "";
 	public static final String PREFIX_DUBLIN_CORE = "dc";

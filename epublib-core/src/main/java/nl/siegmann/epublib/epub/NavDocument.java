@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static nl.siegmann.epublib.epub.PackageDocumentBase.EMPTY_NAMESPACE_PREFIX;
-import static nl.siegmann.epublib.epub.PackageDocumentBase.NAMESPACE_OPF;
+import static nl.siegmann.epublib.epub.PackageDocumentBase.NAMESPACE_OPS;
 
 /**
  * nav document read and write
@@ -169,7 +169,7 @@ public class NavDocument {
     public static void write(XmlSerializer serializer, Book book) throws IOException {
         serializer.startDocument(Constants.CHARACTER_ENCODING, false);
         serializer.setPrefix("", NAMESPACE_HTML);
-        serializer.setPrefix("epub", NAMESPACE_OPF);
+        serializer.setPrefix("epub", NAMESPACE_OPS);
         serializer.startTag(NAMESPACE_HTML, NAVTags.html);
         serializer.startTag(NAMESPACE_HTML, NAVTags.head);
         serializer.startTag(NAMESPACE_HTML, NAVTags.title);
