@@ -49,11 +49,14 @@ public class EpubWriter {
         write(book, out, Version.V3);
     }
 
-    public void write(Book book, OutputStream out, Version version) throws IOException{
+    public void write(Book book, OutputStream out, Version version) throws IOException {
         book = processBook(book);
         ZipOutputStream resultStream = new ZipOutputStream(out);
         writeMimeType(resultStream);
         writeContainer(resultStream);
+        if (book.getResources().containsByHref("META-INF/encryption.xml")) {
+            writeEncryptFile(resultStream, book);
+        }
         initTOCResource(book);
         if (version == Version.V3) {
             initNavResource(book);
@@ -164,6 +167,21 @@ public class EpubWriter {
 		out.write("</container>");
 		out.flush();
 	}
+    
+    /**
+	 * Writes the META-INF/encryption.xml file.
+     *
+     * @param resultStream
+     * @throws IOException
+     */
+    private void writeEncryptFile(ZipOutputStream resultStream, Book book) throws IOException {
+        resultStream.putNextEntry(new ZipEntry("META-INF/encryption.xml"));
+
+        InputStream inputStream = book.getResources().getByHref("META-INF/encryption.xml").getInputStream();
+        book.getResources().remove("META-INF/encryption.xml");
+        IOUtil.copy(inputStream, resultStream);
+        inputStream.close();
+    }
 
 	/**
 	 * Stores the mimetype as an uncompressed file in the ZipOutputStream.

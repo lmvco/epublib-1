@@ -51,4 +51,9 @@ public class ManifestItemReference extends ResourceReference {
     public ManifestItemProperties getProperties() {
         return properties;
     }
+
+    public void setProperties(ManifestItemProperties prop) {
+        this.properties = prop;
+    }
+
 }

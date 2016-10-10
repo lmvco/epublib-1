@@ -240,11 +240,13 @@ public class PackageDocumentReader extends PackageDocumentBase {
 			return resourcesByHref;
 		}
 		Resources result = new Resources();
-		for(Resource resource: resourcesByHref.getAll()) {
-			if(StringUtil.isNotBlank(resource.getHref())
+        for (Resource resource : resourcesByHref.getAll()) {
+            if (!resource.getHref().contains("META-INF")) {
+                if (StringUtil.isNotBlank(resource.getHref())
 					|| resource.getHref().length() > lastSlashPos) {
 				resource.setHref(resource.getHref().substring(lastSlashPos + 1));
 			}
+            }
 			result.add(resource);
 		}
 		return result;

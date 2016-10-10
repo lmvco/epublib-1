@@ -103,6 +103,9 @@ public class EpubReader {
         Resource navResource = processNavResource(result);
         result.setNavResource(navResource);
         result = postProcessBook(result);
+        if (resources.containsByHref("META-INF/encryption.xml")) {
+            result.getResources().add(resources.getByHref("META-INF/encryption.xml"));
+        }
         return result;
     }
 
