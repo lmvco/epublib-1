@@ -70,6 +70,7 @@ public class PackageDocumentReader extends PackageDocumentBase {
     private static void readPackageProperties(Document packageDocument, Book book) {
         String version = packageDocument.getDocumentElement().getAttribute(OPFAttributes.version);
         String uniqueId = packageDocument.getDocumentElement().getAttribute(OPFAttributes.uniqueIdentifier);
+        String prefix = packageDocument.getDocumentElement().getAttribute(OPFAttributes.prefix);
         if (StringUtil.isNotBlank(version)) {
             book.setVersion(Version.findVersion(version));
         }
@@ -77,6 +78,10 @@ public class PackageDocumentReader extends PackageDocumentBase {
             uniqueId = BOOK_ID_ID;
         }
         book.setUniqueId(uniqueId);
+        
+        if (!prefix.isEmpty()) {
+            book.setPrefix(prefix);
+        }
     }
 
 //	private static Resource readCoverImage(Element metadataElement, Resources resources) {

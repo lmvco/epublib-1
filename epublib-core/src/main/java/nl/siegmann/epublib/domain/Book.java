@@ -313,7 +313,8 @@ public class Book implements Serializable {
     private String uniqueId = "";
     private String packageId;
     private String zipPath;
-	
+    private String prefix  = "";
+
 	/**
 	 * Adds the resource to the table of contents of the book as a child section of the given parentSection
 	 * 
@@ -602,5 +603,14 @@ public class Book implements Serializable {
     public void setZipPath(String zipPath) {
         this.zipPath = zipPath;
     }
+    
+     public String getPrefix() {
+        return prefix;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+    
 }
 

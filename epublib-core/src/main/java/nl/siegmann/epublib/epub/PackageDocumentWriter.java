@@ -29,6 +29,9 @@ public abstract class PackageDocumentWriter extends PackageDocumentBase {
         serializer.startTag(NAMESPACE_OPF, OPFTags.packageTag);
         serializer.attribute(EpubWriter.EMPTY_NAMESPACE_PREFIX, OPFAttributes.version, getEpubVersion());
         serializer.attribute(EpubWriter.EMPTY_NAMESPACE_PREFIX, OPFAttributes.uniqueIdentifier, book.getUniqueId());
+        if (!book.getPrefix().isEmpty()) {
+            serializer.attribute(EpubWriter.EMPTY_NAMESPACE_PREFIX, OPFAttributes.prefix, book.getPrefix());
+        }
         serializer.setPrefix(PREFIX_DUBLIN_CORE, NAMESPACE_DUBLIN_CORE);
 
         writeMetadata();

@@ -87,6 +87,7 @@ public abstract class PackageDocumentBase {
 		String properties = "properties";
 		String fallback = "fallback";
 		String mediaOverlay = "media-overlay";
+		String prefix = "prefix";
 		String pageProgressionDirection = "media-page-progression-direction";
         String lang = "xml:lang";
     }
